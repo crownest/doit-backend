@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from django.utils import timezone
 
 class User(models.Model):
     e_mail=models.EmailField(max_length=200, blank=True, verbose_name="E-Posta")
