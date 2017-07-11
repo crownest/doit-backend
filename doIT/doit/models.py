@@ -13,5 +13,4 @@ class Tasks(models.Model):
 
 class Reminders(models.Model):
 	task = models.ForeignKey(Tasks,verbose_name="Görev")
-	time = datetime.datetime.now().strftime('%H:%M:%S')
-	date = datetime.now()
+	creation_date = models.DateTimeField(default=timezone.now)
