@@ -16,12 +16,12 @@ class TaskAdmin(admin.ModelAdmin):
 
 @admin.register(Reminder)
 class ReminderAdmin(admin.ModelAdmin):
-    fields = ('task__title', 'date')
-    list_display = ('get_date_title', 'date', )
+    fields = ('task', 'date',)
+    list_display = ('get_taskr_title', 'date', )
     list_filter = ('date',)
     search_fields = ('task__title',)
 
-    def get_date_title(self, obj):
+    def get_taskr_title(self, obj):
         return obj.task.title
-    get_date_title.admin_order_field = 'task'
-    get_date_title.short_description = 'Task'
+    get_taskr_title.admin_order_field = 'task'
+    get_taskr_title.short_description = 'Task'
