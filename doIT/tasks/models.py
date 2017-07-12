@@ -9,7 +9,9 @@ class Task(models.Model):
         description = models.TextField(
             verbose_name='Description', max_length=10000, null=True
         )
-
+        user = models.ForeignKey(
+            verbose_name='User', to='users.User', related_name='users'
+        )
 
         class Meta:
             ordering = ('title',)
