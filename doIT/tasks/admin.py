@@ -11,7 +11,6 @@ class TaskAdmin(admin.ModelAdmin):
 
     def get_task_title(self, obj):
         return obj.title
-    get_task_title.admin_order_field = 'title'
 
     def get_desc(self, obj):
         return obj.description
@@ -27,5 +26,4 @@ class ReminderAdmin(admin.ModelAdmin):
 
     def get_taskr_title(self, obj):
         return obj.task.title
-    get_taskr_title.admin_order_field = 'task'
     get_taskr_title.short_description = 'Task'
