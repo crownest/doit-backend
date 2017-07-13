@@ -1,18 +1,22 @@
-from django.shortcuts import render
-from .models import Task, Reminder
-from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from tasks.models import Task, Reminder
+from tasks.serializers import TaskSerializer
+from tasks.serializers import ReminderSerializer
+
+class TaskList(APIView):
+
+    def get(self,request):
+        tasks = Task.objects.all()
+        serializer = TaskSerializer(tasks, many=True)
+        return Response(serializer.data)
 
 
+class ReminderList(APIView):
 
-# def task_list(request):
-#     title = request.GET['title']
-#     tasks = Task.objects.filter(end_time__gte=timezone.localtime(
-#                                 timezone.now())).order_by('date')
-#     return HttpResponse("Your task : %s", % title)
-#     # return render(request, 'tasks_list.html', {'tasks':tasks})
-#
-#
-# def task_detail(request, pk):
-#     task = get_object_or_404(Task, pk=pk)
-#     return render(request, 'task_detail.html', {'task': task})
+    def get(self,request):
+        reminders = Reminder.objects.all()
+        serializer = ReminderSerializer(reminders, many=True)
+        return Response(serializer.data)

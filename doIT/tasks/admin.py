@@ -4,7 +4,7 @@ from tasks.models import Reminder, Task
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    fields = ('user', 'title', 'description')
+    fields = ('user','title','description')
     list_display = ('get_task_title', 'get_desc')
     list_filter = ('title',)
     search_fields = ('title', 'description')

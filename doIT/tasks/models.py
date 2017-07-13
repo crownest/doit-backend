@@ -26,9 +26,6 @@ class Reminder(models.Model):
         )
         date = models.DateTimeField(verbose_name='Time', blank=True, null=True)
 
-        # def task_name(self):
-        #     return self.task.get(pk=self.pk)
-
         def __str__(self):
             return '{task}'.format(task=self.task.__str__())
 
