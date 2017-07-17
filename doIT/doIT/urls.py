@@ -8,5 +8,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # Api
-    url(r'^api/', include('doIT.api_urls'))
+    url(r'^api/', include('doIT.api_urls')),
+
+    #Djoser
+    # url(r'^auth/', include('djoser.urls.authtoken')),
 ]

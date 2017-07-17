@@ -7,11 +7,19 @@ from rest_framework import routers
 # Local Django
 from tasks.api_views import  TaskViewSet, ReminderViewSet
 
-router = routers.DefaultRouter()
-router.register(r'tasks', TaskViewSet)
-router.register(r'reminders', ReminderViewSet)
+router_V1 = routers.DefaultRouter()
+
+LIST_V1 = [
+    (r'tasks', TaskViewSet),
+    (r'reminders', ReminderViewSet)
+]
+
+
+for router in LIST_V1:
+    router_V1.register(router[0], router[1])
+
 
 urlpatterns = [
-    url(r'v1/', include(router.urls))
+    url(r'v1/', include(router_V1.urls, namespace='v1')),
 ]
 
