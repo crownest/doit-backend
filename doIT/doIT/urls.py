@@ -14,6 +14,6 @@ urlpatterns = [
     url(r'^api/', include('doIT.api_urls')),
 
     #Djoser
-    url(r'^api-auth/', include('djoser.urls.authtoken'))
+    url(r'^api-auth/', include('djoser.urls.authtoken')),
 
 ]
