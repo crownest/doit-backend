@@ -2,8 +2,6 @@
 from django.contrib import admin
 from django.conf.urls import url, include
 
-
-
 urlpatterns = [
     # Admin
     url(r'^admin/', admin.site.urls),
@@ -11,7 +9,6 @@ urlpatterns = [
     # Api
     url(r'^api/', include('doIT.api_urls')),
 
-    #Djoser
+    # Djoser
     url(r'^api-auth/', include('djoser.urls.authtoken')),
-
 ]

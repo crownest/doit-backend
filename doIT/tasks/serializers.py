@@ -35,24 +35,26 @@ class TaskDetailSerializerV1(TaskDetailSerializer):
 class ReminderListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reminder
-        fields = ('id', 'task','date')
+        fields = ('id', 'task', 'date')
 
 
 class ReminderListSerializerV1(ReminderListSerializer):
     task = TaskListSerializerV1()
+    
     class Meta:
         model = Reminder
-        fields = ('id', 'task','date')
+        fields = ('id', 'task', 'date')
 
 
 class ReminderDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reminder
-        fields = ('id', 'task','date')
+        fields = ('id', 'task', 'date')
 
 
 class ReminderDetailSerializerV1(ReminderDetailSerializer):
     task = TaskDetailSerializerV1()
+    
     class Meta:
         model = Reminder
-        fields = ('id', 'task','date')
+        fields = ('id', 'task', 'date')

@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.admin import UserAdmin as _UserAdmin
 from django.utils.translation import ugettext as _
 
+
 @admin.register(User)
 class UserAdmin(_UserAdmin):
     actions = ['delete_selected']
@@ -25,7 +26,7 @@ class UserAdmin(_UserAdmin):
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login',)}),
     )
-    list_display = ('first_name', 'last_name', 'email','is_active',
+    list_display = ('first_name', 'last_name', 'email', 'is_active',
                     'is_superuser')
     list_filter = ['is_active']
     search_fields = ('email', 'first_name', 'last_name')

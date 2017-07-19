@@ -5,7 +5,7 @@ from django.conf.urls import url, include
 from rest_framework import routers
 
 # Local Django
-from tasks.api_views import  TaskViewSet, ReminderViewSet
+from tasks.api_views import TaskViewSet, ReminderViewSet
 from users.api_views import UserViewSet
 
 router_V1 = routers.DefaultRouter()

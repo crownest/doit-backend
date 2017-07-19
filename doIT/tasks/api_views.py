@@ -10,6 +10,7 @@ from .serializers import (
     TaskDetailSerializerV1, ReminderDetailSerializerV1
 )
 
+
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
 
@@ -32,6 +33,7 @@ class TaskViewSet(viewsets.ModelViewSet):
 
 class ReminderViewSet(viewsets.ModelViewSet):
     queryset = Reminder.objects.all()
+    
     def get_queryset(self):
         user = self.request.user
         if not user.is_superuser:
