@@ -4,10 +4,8 @@ from rest_framework import viewsets
 
 # Local Django
 from .models import Task, Reminder
-from .serializers import (
-    TaskListSerializer, ReminderListSerializer,
-    TaskListSerializerV1, ReminderListSerializerV1,
-    TaskDetailSerializerV1, ReminderDetailSerializerV1
+from .serializers import (TaskListSerializer, TaskListSerializerV1,
+    TaskDetailSerializerV1
 )
 
 
@@ -27,13 +25,13 @@ class TaskViewSet(viewsets.ModelViewSet):
                 return TaskListSerializerV1
             elif self.action == 'retrieve':
                 return TaskDetailSerializerV1
-        
+
         return TaskListSerializer
 
 
 class ReminderViewSet(viewsets.ModelViewSet):
     queryset = Reminder.objects.all()
-    
+
     def get_queryset(self):
         user = self.request.user
         if not user.is_superuser:
@@ -47,6 +45,5 @@ class ReminderViewSet(viewsets.ModelViewSet):
                 return ReminderListSerializerV1
             elif self.action == 'retrieve':
                 return ReminderDetailSerializerV1
-        
-        return ReminderListSerializer
 
+        return ReminderListSerializer
