@@ -38,7 +38,34 @@ Response:
 }
 ~~~~
 
+# TASKS
 
+Method: GET
+
+URL: http://127.0.0.1:8000/api/v1/tasks/
+
+Header:
+~~~~
+Authorization TOKEN 91f4def1bee0d16730aef26879de74d10b7cad96
+~~~~
+
+Sample Request:
+~~~~
+curl --request GET \
+ --url http://127.0.0.1:8000/api/v1/tasks/ \
+ --header 'authorization: Token 91f4def1bee0d16730aef26879de74d10b7cad96'
+~~~~
+
+Response:
+~~~~
+[
+   {
+       "id": 1,
+       "user": 1,
+       "title": "sdfghjk"
+   }
+]
+~~~~
 
 
 
