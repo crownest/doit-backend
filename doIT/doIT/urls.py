@@ -1,9 +1,7 @@
 # Django
 from django.contrib import admin
 from django.conf.urls import url, include
-#Third-Party
-import rest_framework_jwt.views
-import djoser.views
+
 
 
 urlpatterns = [
