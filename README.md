@@ -67,6 +67,40 @@ Response:
 ]
 ~~~~
 
+# TASKS DETAIL
+
+Method: GET
+
+URL: http://127.0.0.1:8000/api/v1/tasks/1
+
+Header: 
+~~~~
+Authorization TOKEN 5f9675e15afff2a957e481dbec0a47339ac2f4ea
+~~~~
+
+Sample Request:
+~~~~
+curl --request GET \
+ --url http://127.0.0.1:8000/api/v1/tasks/1 \
+ --header 'authorization: Token 5f9675e15afff2a957e481dbec0a47339ac2f4ea'
+~~~~
+
+Response:
+~~~~
+{
+   "id": 1,
+   "user": 1,
+   "title": "adsafa",
+   "description": "afasfasfasfas",
+   "reminders": [
+       {
+           "id": 1,
+           "date": "2017-07-25T16:27:18Z"
+       }
+   ]
+}
+~~~~
+
 
 
 
