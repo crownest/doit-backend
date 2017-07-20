@@ -101,6 +101,124 @@ Response:
 }
 ~~~~
 
+# DEPLOYMENT
+
+Uzak Sunucuya Bağlanma:
+~~~~
+ssh root@207.154.223.187
+~~~~
+
+Ngnix Kurulumu:
+~~~~
+sudo apt-get update
+sudo apt-gey install ngnix
+~~~~
+
+Aktif olup olmadığını kontrol etmek için:
+~~~~
+systemctl status ngnix
+~~~~
+Web Sayfası:
+~~~~
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04
+~~~~
+
+Supervisor Kurulumu:
+~~~~
+sudo apt-get install supervisor
+~~~~
+
+Supervisor' u yeniden başlatmak için:
+~~~~
+service supervisor restart
+~~~~
+
+Web Sayfası:
+~~~~
+https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps
+~~~~
+
+Python Kurulumu:
+~~~~
+sudo apt-get install python-pip
+~~~~
+
+Virtualenv Kurulumu:
+~~~~
+sudo apt-get install virtualenv
+~~~~
+
+Yeni User Oluşturmak için:
+~~~~
+adduser apps
+~~~~
+
+Yeni User' a Geçiş Yapmak için:
+~~~~
+su - apps
+~~~~
+
+Oluşturulan User ' a sudo yetkisi vermek için:
+~~~~
+sudo usermod -a -G apps
+~~~~
+
+Yedeklemeler, konfigürasyon, uygulama patlarsa eğer nedenlerini görebileceğimiz ve kaynak kodlarının bulunacağı dizinler 
+oluşturulur:
+~~~~
+mkdir log conf backup web
+~~~~
+
+web dosyasının içerisine virtualenv kurulup aktif edilir:
+~~~~
+virtualenv -p python3 env
+source env/bin/activate
+~~~~
+
+Sorulacak?
+~~~~
+ssh-keygen -t rsa -b 4096 -C "digitalocean-doit-apps"
+~~~~
+
+Projemizi web dizini altına ekledik:
+~~~~
+git clone git@github.com:crownest/doIT-Backend.git source
+~~~~
+
+Projemiz içerisindeki source dizinine postgresql veri tabanını kurduk:
+~~~~
+sudo apt-get install postgresql postgresql-contrib
+~~~~
+
+postgresql terminaline girip Database oluşturduk, ardından kullanıcı oluşturup yetkilerini verdik:
+~~~~
+postgres@doit:~$ psql
+postgres=# CREATE DATABASE doitdb;
+postgres=# CREATE USER doit WITH PASSWORD '-';
+postgres=# GRANT ALL PRIVILEGES ON DATABASE doitdb to doit;
+postgres=# \q
+postgres@doit:~$ exit
+~~~~
+
+Oluşturduğumuz database bilgilerini projemizdeki settings.py dosyası içerisindeki DATABASES içerisine kaydettik.
+
+Sonrasında source dizini içerisine Django,Psycopg2,Gunicorn ,Django Rest Framework ve Djoser kurduk:
+~~~~
+pip install Django
+pip install djangorestframework
+pip install djoser
+pip install psycopg2
+pip install gunicorn
+~~~~
+
+Sonra projeyi migrate ettik. Ve ardından superuser oluşturduk:
+~~~~
+./manage.py migrate
+./manage.py createsuperuser
+~~~~
+
+
+
 
 
 
