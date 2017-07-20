@@ -6,7 +6,6 @@ from tasks.models import Reminder, Task
 class TaskAdmin(admin.ModelAdmin):
     fields = ('user', 'title', 'description')
     list_display = ('get_task_title', 'get_desc')
-    list_filter = ('title',)
     search_fields = ('title', 'description')
 
     def get_task_title(self, obj):
@@ -21,13 +20,13 @@ class TaskAdmin(admin.ModelAdmin):
 @admin.register(Reminder)
 class ReminderAdmin(admin.ModelAdmin):
     fields = ('task', 'date',)
-    list_display = ('get_taskr_title', 'get_date')
-    list_filter = ('date', 'task__title')
+    list_display = ('get_task_title', 'get_date')
+    list_filter = ('date',)
     search_fields = ('task__title',)
 
-    def get_taskr_title(self, obj):
+    def get_task_title(self, obj):
         return obj.task.title
-    get_taskr_title.short_description = "Tasks"
+    get_task_title.short_description = "Tasks"
 
     def get_date(self, obj):
         return obj.date
