@@ -11,7 +11,7 @@ class Task(models.Model):
             verbose_name='Description', max_length=10000, null=True
         )
         user = models.ForeignKey(
-            verbose_name='User', to='users.User', related_name='users'
+            verbose_name='User', to='users.User', related_name='tasks'
         )
 
         class Meta:
@@ -27,11 +27,13 @@ class Reminder(models.Model):
             verbose_name='Task', to='tasks.Task', related_name='reminders'
         )
         date = models.DateTimeField(
-            verbose_name='Time', blank=True, null=True,
+            verbose_name='Date', blank=True, null=True,
         )
-
-        def __str__(self):
-            return '{task}'.format(task=self.task.__str__())
 
         class Meta:
             ordering = ('date',)
+
+        def __str__(self):
+            return '{task} - {date}'.format(
+	            task=self.task.title, date=self.date
+            )
