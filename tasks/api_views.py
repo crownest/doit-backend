@@ -5,7 +5,7 @@ from rest_framework import viewsets
 # Local Django
 from .models import Task, Reminder
 from .serializers import (TaskListSerializer, TaskListSerializerV1,
-    TaskDetailSerializerV1
+    TaskDetailSerializerV1, TaskCreateSerializer, TaskCreateSerializerV1,
 )
 
 
@@ -25,6 +25,8 @@ class TaskViewSet(viewsets.ModelViewSet):
                 return TaskListSerializerV1
             elif self.action == 'retrieve':
                 return TaskDetailSerializerV1
+            elif self.action == 'create':
+                return  TaskCreateSerializerV1
 
         return TaskListSerializer
 
