@@ -1,14 +1,15 @@
+# Django
 from django.db import models
 from django.contrib.auth.models import (
-                                    BaseUserManager,
-                                    AbstractBaseUser,
-                                    PermissionsMixin
-                                )
+    BaseUserManager, AbstractBaseUser, PermissionsMixin
+)
 from django.utils.translation import ugettext_lazy as _
 from django.utils.crypto import get_random_string
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, password=None):
+
         if not email:
             raise ValueError(_('Users must have email address.'))
 
@@ -17,18 +18,19 @@ class UserManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name
         )
+
         user.set_password(password)
         user.save(using=self._db)
 
         return user
+
     def create_superuser(self, email, first_name, last_name, password):
 
         if not email:
             raise ValueError(_('Admins must have email address.'))
 
-        user = self.create_user(email,
-                first_name=first_name,
-                last_name=last_name
+        user = self.create_user(
+           email, first_name=first_name, last_name=last_name
         )
         user.is_superuser = True
         user.set_password(password)
@@ -36,10 +38,12 @@ class UserManager(BaseUserManager):
 
         return user
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         verbose_name=_('Email'), max_length=255, unique=True
     )
+
     first_name = models.CharField(verbose_name=_('First Name'), max_length=50)
     last_name = models.CharField(verbose_name=_('Last Name'), max_length=50)
     is_active = models.BooleanField(verbose_name=_('Active'), default=True)
