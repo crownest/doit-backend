@@ -1,4 +1,7 @@
+# Django
 from django.contrib import admin
+
+# Local Django
 from tasks.models import Reminder, Task
 
 
