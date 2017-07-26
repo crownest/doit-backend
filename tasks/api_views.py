@@ -4,8 +4,9 @@ from rest_framework import viewsets
 
 # Local Django
 from .models import Task, Reminder
-from .serializers import (TaskListSerializer, TaskListSerializerV1,
-    TaskDetailSerializerV1
+from .serializers import (
+        TaskListSerializer, TaskListSerializerV1,
+        TaskDetailSerializerV1
 )
 
 
