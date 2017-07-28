@@ -53,6 +53,8 @@ class TaskDetailSerializer(serializers.ModelSerializer):
 
 
 class TaskDetailSerializerV1(TaskDetailSerializer):
+    reminders = ReminderDetailSerializerV1(many=True, read_only=True)
+    
     class Meta:
         model = Task
         fields = ('id', 'user', 'title', 'description', 'reminders')
