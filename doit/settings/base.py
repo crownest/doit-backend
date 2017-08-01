@@ -8,9 +8,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 # Standart Library
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PACKAGE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+BASE_DIR = os.path.dirname(PACKAGE_ROOT)
+
+sys.path.append(PACKAGE_ROOT + '/apps')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -28,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'doit',
 
     # External Applications
     'rest_framework',
@@ -50,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'doIT.urls'
+ROOT_URLCONF = 'doit.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'doIT.wsgi.application'
+WSGI_APPLICATION = 'doit.wsgi.application'
 
 AUTH_USER_MODEL = 'users.User'
 
