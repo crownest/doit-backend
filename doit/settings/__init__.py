@@ -2,12 +2,12 @@
 import getpass
 
 # Local Django
-from doIT.settings.base import *
+from doit.settings.base import *
 
 
 if getpass.getuser() in ['root']:
-    from doIT.settings.prod import *
+    from doit.settings.prod import *
 elif getpass.getuser() in ['vagrant', 'ubuntu', 'doit']:
-    from doIT.settings.staging import *
+    from doit.settings.staging import *
 else:
-    from doIT.settings.dev import *
+    from doit.settings.dev import *
