@@ -13,12 +13,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
 
     def get_queryset(self):
-        user = self.request.user
-
-        if not user.is_superuser:
-            return self.queryset.filter(id=user.id)
-        else:
-            return self.queryset
+        return self.queryset.user(id=self.request.user.id)
 
     def get_serializer_class(self):
         if self.request.version == 'v1':
