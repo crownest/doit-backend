@@ -1,9 +1,6 @@
 # Third-Party
 from rest_framework import serializers
 
-# Django
-from django.db import models
-
 # Local Django
 from users.models import User
 

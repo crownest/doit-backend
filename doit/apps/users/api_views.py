@@ -2,10 +2,10 @@
 from rest_framework import viewsets
 
 # Local Django
-from .models import User
-from .serializers import (
-    UserListSerializer, UserListSerializerV1, UserDetailSerializer,
-    UserDetailSerializerV1
+from users.models import User
+from users.serializers import (
+    UserListSerializer, UserListSerializerV1,
+    UserDetailSerializer, UserDetailSerializerV1
 )
 
 
