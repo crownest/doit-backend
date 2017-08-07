@@ -11,13 +11,13 @@ from tasks.models import Task, Reminder
 class ReminderListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reminder
-        fields = ('id', 'date')
+        fields = ('date',)
 
 
 class ReminderListSerializerV1(ReminderListSerializer):
     class Meta:
         model = Reminder
-        fields = ('id', 'date')
+        fields = ('date',)
 
 
 class ReminderDetailSerializer(serializers.ModelSerializer):
@@ -54,7 +54,30 @@ class TaskDetailSerializer(serializers.ModelSerializer):
 
 class TaskDetailSerializerV1(TaskDetailSerializer):
     reminders = ReminderDetailSerializerV1(many=True, read_only=True)
-    
+
     class Meta:
         model = Task
         fields = ('id', 'user', 'title', 'description', 'reminders')
+
+
+class TaskCreateSerializer(serializers.ModelSerializer):
+    reminders = ReminderListSerializer(many=True)
+
+    class Meta:
+        model = Task
+        fields = ('user', 'title', 'description', 'reminders')
+
+
+class TaskCreateSerializerV1(TaskCreateSerializer):
+    reminders = ReminderListSerializerV1(many=True)
+
+    class Meta:
+        model = Task
+        fields = ('user', 'title', 'description', 'reminders')
+
+    def create(self, validated_data):
+        reminders_data = validated_data.pop('reminders')
+        task = Task.objects.create(**validated_data)
+        for reminders_data in reminders_data:
+            Reminder.objects.create(task=task, **reminders_data)
+        return task
