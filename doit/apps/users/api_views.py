@@ -13,7 +13,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
 
     def get_queryset(self):
-        return self.queryset.user(id=self.request.user.id)
+        return self.queryset.filter(id=self.request.user.id)
 
     def get_serializer_class(self):
         if self.request.version == 'v1':
