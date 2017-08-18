@@ -4,8 +4,9 @@ from rest_framework import viewsets
 # Local Django
 from tasks.models import Task, Reminder
 from tasks.serializers import (
-    TaskListSerializer, TaskListSerializerV1, TaskDetailSerializerV1,
-    TaskCreateSerializerV1
+    TaskListSerializer, TaskListSerializerV1,
+    TaskDetailSerializerV1, TaskCreateSerializerV1,
+    ReminderListSerializer, ReminderListSerializerV1, ReminderDetailSerializerV1
 )
 
 
@@ -25,6 +26,13 @@ class TaskViewSet(viewsets.ModelViewSet):
                 return TaskCreateSerializerV1
 
         return TaskListSerializer
+
+    def perform_create(self, serializer):
+        task = serializer.save(user=self.request.user)
+
+        reminders_data = self.request.data.get('reminders', [])
+        for reminder_data in reminders_data:
+            Reminder.objects.create(task=task, **reminder_data)
 
 
 class ReminderViewSet(viewsets.ModelViewSet):
