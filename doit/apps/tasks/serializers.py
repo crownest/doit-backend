@@ -11,13 +11,13 @@ from tasks.models import Task, Reminder
 class ReminderListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reminder
-        fields = ('date',)
+        fields = ('id', 'date')
 
 
 class ReminderListSerializerV1(ReminderListSerializer):
     class Meta:
         model = Reminder
-        fields = ('date',)
+        fields = ('id', 'date')
 
 
 class ReminderDetailSerializer(serializers.ModelSerializer):
@@ -30,6 +30,18 @@ class ReminderDetailSerializerV1(ReminderDetailSerializer):
     class Meta:
         model = Reminder
         fields = ('id', 'date')
+
+
+class ReminderCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reminder
+        fields = ('date',)
+
+
+class ReminderCreateSerializerV1(ReminderCreateSerializer):
+    class Meta:
+        model = Reminder
+        fields = ('date',)
 
 
 class TaskListSerializer(serializers.ModelSerializer):
@@ -61,23 +73,16 @@ class TaskDetailSerializerV1(TaskDetailSerializer):
 
 
 class TaskCreateSerializer(serializers.ModelSerializer):
-    reminders = ReminderListSerializer(many=True)
+    reminders = ReminderCreateSerializer(many=True, read_only=True)
 
     class Meta:
         model = Task
-        fields = ('user', 'title', 'description', 'reminders')
+        fields = ('title', 'description', 'reminders')
 
 
 class TaskCreateSerializerV1(TaskCreateSerializer):
-    reminders = ReminderListSerializerV1(many=True)
+    reminders = ReminderCreateSerializerV1(many=True, read_only=True)
 
     class Meta:
         model = Task
-        fields = ('user', 'title', 'description', 'reminders')
-
-    def create(self, validated_data):
-        reminders_data = validated_data.pop('reminders')
-        task = Task.objects.create(**validated_data)
-        for reminders_data in reminders_data:
-            Reminder.objects.create(task=task, **reminders_data)
-        return task
+        fields = ('title', 'description', 'reminders')
