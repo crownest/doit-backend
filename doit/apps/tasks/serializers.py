@@ -86,3 +86,15 @@ class TaskCreateSerializerV1(TaskCreateSerializer):
     class Meta:
         model = Task
         fields = ('title', 'description', 'reminders')
+
+
+class TaskUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = ('title', 'description')
+
+
+class TaskUpdateSerializerV1(TaskUpdateSerializer):
+    class Meta:
+        model = Task
+        fields = ('title', 'description')

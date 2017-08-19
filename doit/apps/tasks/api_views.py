@@ -5,7 +5,7 @@ from rest_framework import viewsets
 from tasks.models import Task, Reminder
 from tasks.serializers import (
     TaskListSerializer, TaskListSerializerV1,
-    TaskDetailSerializerV1, TaskCreateSerializerV1,
+    TaskDetailSerializerV1, TaskCreateSerializerV1, TaskUpdateSerializerV1,
     ReminderListSerializer, ReminderListSerializerV1, ReminderDetailSerializerV1
 )
 
@@ -24,6 +24,8 @@ class TaskViewSet(viewsets.ModelViewSet):
                 return TaskDetailSerializerV1
             elif self.action == 'create':
                 return TaskCreateSerializerV1
+            elif self.action == 'update':
+                return TaskUpdateSerializerV1
 
         return TaskListSerializer
 
