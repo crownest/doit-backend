@@ -8,63 +8,50 @@ from django.db import models
 from tasks.models import Task, Reminder
 
 
-class ReminderListSerializer(serializers.ModelSerializer):
+class ReminderSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Reminder
         fields = ('id', 'date')
 
 
-class ReminderListSerializerV1(ReminderListSerializer):
+class ReminderListSerializerV1(ReminderSerializer):
+
     class Meta:
         model = Reminder
         fields = ('id', 'date')
 
 
-class ReminderDetailSerializer(serializers.ModelSerializer):
+class ReminderDetailSerializerV1(ReminderSerializer):
+
     class Meta:
         model = Reminder
         fields = ('id', 'date')
 
 
-class ReminderDetailSerializerV1(ReminderDetailSerializer):
-    class Meta:
-        model = Reminder
-        fields = ('id', 'date')
+class ReminderCreateSerializerV1(ReminderSerializer):
 
-
-class ReminderCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reminder
         fields = ('date',)
 
 
-class ReminderCreateSerializerV1(ReminderCreateSerializer):
-    class Meta:
-        model = Reminder
-        fields = ('date',)
-
-
-class TaskListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Task
-        fields = ('id', 'user', 'title')
-
-
-class TaskListSerializerV1(TaskListSerializer):
-    class Meta:
-        model = Task
-        fields = ('id', 'user', 'title')
-
-
-class TaskDetailSerializer(serializers.ModelSerializer):
-    reminders = ReminderDetailSerializer(many=True, read_only=True)
+class TaskSerializer(serializers.ModelSerializer):
+    reminders = ReminderSerializer(many=True, read_only=True)
 
     class Meta:
         model = Task
         fields = ('id', 'user', 'title', 'description', 'reminders')
 
 
-class TaskDetailSerializerV1(TaskDetailSerializer):
+class TaskListSerializerV1(TaskSerializer):
+
+    class Meta:
+        model = Task
+        fields = ('id', 'user', 'title')
+
+
+class TaskDetailSerializerV1(TaskSerializer):
     reminders = ReminderDetailSerializerV1(many=True, read_only=True)
 
     class Meta:
@@ -72,15 +59,7 @@ class TaskDetailSerializerV1(TaskDetailSerializer):
         fields = ('id', 'user', 'title', 'description', 'reminders')
 
 
-class TaskCreateSerializer(serializers.ModelSerializer):
-    reminders = ReminderCreateSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Task
-        fields = ('title', 'description', 'reminders')
-
-
-class TaskCreateSerializerV1(TaskCreateSerializer):
+class TaskCreateSerializerV1(TaskSerializer):
     reminders = ReminderCreateSerializerV1(many=True, read_only=True)
 
     class Meta:
@@ -88,13 +67,8 @@ class TaskCreateSerializerV1(TaskCreateSerializer):
         fields = ('title', 'description', 'reminders')
 
 
-class TaskUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Task
-        fields = ('title', 'description')
+class TaskUpdateSerializerV1(TaskSerializer):
 
-
-class TaskUpdateSerializerV1(TaskUpdateSerializer):
     class Meta:
         model = Task
         fields = ('title', 'description')
