@@ -1,0 +1,10 @@
+site_name: Doit
+site_author: Crownest
+copyright: Crownest
+site_dir: docs_build
+use_directory_urls: false
+
+pages:
+    - Home: index.md
+    - Api:
+      - v1: api/v1.md

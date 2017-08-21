@@ -1,7 +1,18 @@
 # Django
 Django==1.11.3
-# pytz==2017.2
+
 
 # Django Rest Framework
 djangorestframework==3.6.3
 djoser==0.6.0
+
+
+# Documentation
+mkdocs==0.16.3
+# Jinja2==2.9.6
+# Markdown==2.6.9
+# MarkupSafe==1.0
+# PyYAML==3.12
+# click==6.7
+# livereload==2.5.1
+# tornado==4.5.1

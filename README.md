@@ -1,4 +1,9 @@
-### doit
-[api](docs/api)
+# iotbase
 
-[deployment](docs/deployment)
+[Docs](docs/)
+
+
+## Build Docs
+```
+mkdocs build
+```

@@ -75,7 +75,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'doit.wsgi.application'
 
+
+# User
+
 AUTH_USER_MODEL = 'users.User'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -90,11 +94,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# Documentation
+
+DOCUMENTATION_ROOT = 'docs_build'
+
+
+# Django Rest Framework
 
 REST_FRAMEWORK = {
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',

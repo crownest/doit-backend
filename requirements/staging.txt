@@ -1,5 +1,6 @@
 -r base.txt
 
+
 # IPython
 ipython==6.1.0
 # Pygments==2.2.0
@@ -14,5 +15,6 @@ ipython==6.1.0
 # ipython-genutils==0.2.0
 # wcwidth==0.1.7
 
-# psycopg
+
+# Database
 psycopg2==2.7.3
