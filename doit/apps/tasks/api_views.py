@@ -4,10 +4,11 @@ from rest_framework import viewsets
 # Local Django
 from tasks.models import Task, Reminder
 from tasks.serializers import (
-    TaskSerializer, TaskListSerializerV1,
-    TaskDetailSerializerV1, TaskCreateSerializerV1, TaskUpdateSerializerV1,
-    ReminderSerializer, ReminderListSerializerV1, ReminderDetailSerializerV1
-)
+    TaskSerializer, TaskListSerializerV1, TaskCreateSerializerV1,
+    TaskDetailSerializerV1, TaskUpdateSerializerV1,
+    ReminderSerializer, ReminderListSerializerV1, ReminderCreateSerializerV1,
+    ReminderDetailSerializerV1
+) 
 
 
 class TaskViewSet(viewsets.ModelViewSet):
@@ -49,5 +50,7 @@ class ReminderViewSet(viewsets.ModelViewSet):
                 return ReminderListSerializerV1
             elif self.action == 'retrieve':
                 return ReminderDetailSerializerV1
+            elif self.action == 'create':
+                return ReminderCreateSerializerV1
 
         return ReminderSerializer
