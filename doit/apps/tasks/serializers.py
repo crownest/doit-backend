@@ -36,6 +36,13 @@ class ReminderCreateSerializerV1(ReminderSerializer):
         fields = ('task', 'date')
 
 
+class ReminderUpdateSerializerV1(ReminderSerializer):
+
+    class Meta:
+        model = Reminder
+        fields = ('date',)
+
+
 class TaskSerializer(serializers.ModelSerializer):
     reminders = ReminderSerializer(many=True, read_only=True)
 
