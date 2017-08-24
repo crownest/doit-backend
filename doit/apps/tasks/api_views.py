@@ -7,8 +7,8 @@ from tasks.serializers import (
     TaskSerializer, TaskListSerializerV1, TaskCreateSerializerV1,
     TaskDetailSerializerV1, TaskUpdateSerializerV1,
     ReminderSerializer, ReminderListSerializerV1, ReminderCreateSerializerV1,
-    ReminderDetailSerializerV1
-) 
+    ReminderDetailSerializerV1, ReminderUpdateSerializerV1
+)
 
 
 class TaskViewSet(viewsets.ModelViewSet):
@@ -52,5 +52,7 @@ class ReminderViewSet(viewsets.ModelViewSet):
                 return ReminderDetailSerializerV1
             elif self.action == 'create':
                 return ReminderCreateSerializerV1
+            elif self.action == 'update':
+                return ReminderUpdateSerializerV1
 
         return ReminderSerializer
