@@ -7,6 +7,8 @@ from django.contrib.auth.models import (
 
 #Local Django
 from users.managers import UserManager
+from random import choice
+from string import hexdigits
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -17,6 +19,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(verbose_name=_('Last Name'), max_length=50)
     is_active = models.BooleanField(verbose_name=_('Active'), default=True)
     is_staff = models.BooleanField(verbose_name=_('Staff'), default=False)
+    is_verify = models.BooleanField(verbose_name=_('Verify'), default=False)
 
     objects = UserManager()
 
@@ -37,3 +40,29 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return '{first_name}'.format(first_name=self.first_name)
+
+
+def activation_key():
+    while True :
+        key = (''.join(choice(hexdigits) for i in range(50)))
+        if ActivationKey.objects.filter(key=key).count() == 0:
+            return key
+
+class ActivationKey(models.Model):
+    user = models.ForeignKey(verbose_name=_('User'), to='users.User',
+                             related_name='activationkey')
+    is_used = models.BooleanField(verbose_name=_('Used'), default=False)
+    key = models.CharField(verbose_name=_('Key'), max_length=50,
+                           unique=True)
+
+    class Meta:
+        verbose_name = _('ActivationKey')
+        verbose_name_plural = _('ActivationKey')
+
+    def __str__(self):
+        return self.key
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.key = activation_key()
+            super(ActivationKey, self).save(*args, **kwargs)

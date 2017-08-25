@@ -1,6 +1,7 @@
 # Django
 from django.contrib import admin
 from django.conf.urls import url, include
+from users import views
 
 # Local Django
 from doit.views import DocumentationView
@@ -19,4 +20,7 @@ urlpatterns = [
 
     # Djoser
     url(r'^api-auth/', include('djoser.urls.authtoken')),
+
+    # Activation
+    url(r'^verify/(?P<key>[0-9A-Za-z]+)/$', views.verify, name='verify'),
 ]
