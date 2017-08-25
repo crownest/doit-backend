@@ -5,7 +5,8 @@ from rest_framework import viewsets
 from users.models import User
 from users.serializers import (
     UserListSerializer, UserListSerializerV1,
-    UserDetailSerializer, UserDetailSerializerV1
+    UserDetailSerializer, UserDetailSerializerV1,
+    UserCreateSerializer, UserCreateSerializerV1
 )
 
 
@@ -21,5 +22,7 @@ class UserViewSet(viewsets.ModelViewSet):
                 return UserListSerializerV1
             elif self.action == 'retrieve':
                 return UserDetailSerializerV1
+            elif self.action == 'create':
+                return UserCreateSerializerV1
 
         return UserListSerializer
