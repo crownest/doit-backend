@@ -4,8 +4,11 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.admin import UserAdmin as _UserAdmin
 
 # Local
-from users.models import User
+from users.models import User, ActivationKey
 
+@admin.register(ActivationKey)
+class ActivationKeyAdmin(admin.ModelAdmin):
+    list_display = ('user', 'key')
 
 @admin.register(User)
 class UserAdmin(_UserAdmin):
@@ -18,7 +21,7 @@ class UserAdmin(_UserAdmin):
         }),
         (_('Permissions'), {
             'fields': (
-                'is_active', 'is_staff',
+                'is_active', 'is_staff', 'is_verify',
                 'is_superuser', 'groups', 'user_permissions'
             )
         }),

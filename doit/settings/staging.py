@@ -34,4 +34,6 @@ DATABASES = {
 }
 
 
+DOMAIN = 'http://doit.unicrow.com'
+
 from .local import *
