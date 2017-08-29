@@ -6,9 +6,6 @@ from django.contrib.auth.admin import UserAdmin as _UserAdmin
 # Local
 from users.models import User, ActivationKey
 
-@admin.register(ActivationKey)
-class ActivationKeyAdmin(admin.ModelAdmin):
-    list_display = ('user', 'key')
 
 @admin.register(User)
 class UserAdmin(_UserAdmin):
@@ -42,8 +39,18 @@ class UserAdmin(_UserAdmin):
     )
 
     list_display = (
-        'first_name', 'last_name', 'email', 'is_active', 'is_superuser'
+        'first_name', 'last_name', 'email', 'is_active', 'is_verify', 'is_superuser'
     )
     list_filter = ('is_active',)
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('first_name', 'last_name')
+
+
+@admin.register(ActivationKey)
+class ActivationKeyAdmin(admin.ModelAdmin):
+    fields = ('key', 'user', 'is_used')
+    readonly_fields = ('key', 'user', 'is_used')
+
+    list_display = ('user', 'key', 'is_used')
+    list_filter = ('is_used',)
+    search_fields = ('user__email', 'user__first_name', 'user__last_name')

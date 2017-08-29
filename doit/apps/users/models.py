@@ -1,5 +1,6 @@
 # Django
 from django.db import models
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin
@@ -7,8 +8,6 @@ from django.contrib.auth.models import (
 
 #Local Django
 from users.managers import UserManager
-from random import choice
-from string import hexdigits
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -42,27 +41,17 @@ class User(AbstractBaseUser, PermissionsMixin):
         return '{first_name}'.format(first_name=self.first_name)
 
 
-def activation_key():
-    while True :
-        key = (''.join(choice(hexdigits) for i in range(50)))
-        if ActivationKey.objects.filter(key=key).count() == 0:
-            return key
-
 class ActivationKey(models.Model):
-    user = models.ForeignKey(verbose_name=_('User'), to='users.User',
-                             related_name='activationkey')
+    key = models.CharField(verbose_name=_('Key'), max_length=50, unique=True)
     is_used = models.BooleanField(verbose_name=_('Used'), default=False)
-    key = models.CharField(verbose_name=_('Key'), max_length=50,
-                           unique=True)
+    user = models.ForeignKey(
+        verbose_name=_('User'),
+        to=settings.AUTH_USER_MODEL, related_name='activation_keys'
+    )
 
     class Meta:
-        verbose_name = _('ActivationKey')
-        verbose_name_plural = _('ActivationKey')
+        verbose_name = _('Activation Key')
+        verbose_name_plural = _('Activation Key')
 
     def __str__(self):
-        return self.key
-
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.key = activation_key()
-            super(ActivationKey, self).save(*args, **kwargs)
+        return '{key}'.format(key=self.key)

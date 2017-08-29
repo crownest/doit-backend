@@ -4,7 +4,7 @@ from django.conf.urls import url, include
 from users import views
 
 # Local Django
-from doit.views import DocumentationView
+from doit.views import DocumentationView, ActivationView
 
 
 urlpatterns = [
@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^api-auth/', include('djoser.urls.authtoken')),
 
     # Activation
-    url(r'^verify/(?P<key>[0-9A-Za-z]+)/$', views.verify, name='verify'),
+    url(r'^activation/(?P<key>\w+)/$', ActivationView.as_view(), name='activation'),
 ]
