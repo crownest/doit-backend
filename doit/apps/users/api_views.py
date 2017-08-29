@@ -1,12 +1,17 @@
 # Third-Party
 from rest_framework import viewsets
 
+# Django
+from django.conf import settings
+from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
+
 # Local Django
-from users.models import User
+from users.models import User, ActivationKey
+from doit.modules import ActivationKeyModule
 from users.serializers import (
-    UserListSerializer, UserListSerializerV1,
-    UserDetailSerializer, UserDetailSerializerV1,
-    UserCreateSerializer, UserCreateSerializerV1
+    UserSerializer,  UserListSerializerV1, UserCreateSerializerV1,
+    UserDetailSerializerV1
 )
 
 
@@ -25,4 +30,35 @@ class UserViewSet(viewsets.ModelViewSet):
             elif self.action == 'create':
                 return UserCreateSerializerV1
 
-        return UserListSerializer
+        return UserSerializer
+
+    def get_permissions(self):
+        permissions = super(UserViewSet, self).get_permissions()
+
+        if self.action == 'create':
+            return []
+
+        return permissions
+
+    def perform_create(self, serializer):
+        # Create User
+        user = serializer.save()
+        user.set_password(serializer.validated_data.get('password', ''))
+        user.save()
+
+        # Create Activation Key
+        activation_key = ActivationKeyModule.create_key(user=user)
+        activation_url = settings.DOMAIN + reverse('activation', kwargs={
+            'key': activation_key.key
+        })
+
+        # Send Activation Mail
+        send_mail(
+            'Doit e-mail activation',
+            activation_url,
+            'doit@unicrow.com',
+            [user.email],
+            fail_silently=False
+        )
+
+        return user
