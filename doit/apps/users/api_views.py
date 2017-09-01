@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 
 # Local Django
 from users.models import User, ActivationKey
-from doit.modules import ActivationKeyModule
+from doit.modules import ActivationKeyModule, MailModule
 from users.serializers import (
     UserSerializer,  UserListSerializerV1, UserCreateSerializerV1,
     UserDetailSerializerV1
@@ -53,12 +53,6 @@ class UserViewSet(viewsets.ModelViewSet):
         })
 
         # Send Activation Mail
-        send_mail(
-            'Doit e-mail activation',
-            activation_url,
-            'doit@unicrow.com',
-            [user.email],
-            fail_silently=False
-        )
+        MailModule.send_activation_mail(activation_key)
 
         return user
