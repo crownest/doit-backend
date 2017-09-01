@@ -11,7 +11,7 @@ from users.models import User, ActivationKey
 from doit.modules import ActivationKeyModule
 from users.serializers import (
     UserSerializer,  UserListSerializerV1, UserCreateSerializerV1,
-    UserDetailSerializerV1
+    UserDetailSerializerV1, UserUpdateSerializerV1
 )
 
 
@@ -29,6 +29,8 @@ class UserViewSet(viewsets.ModelViewSet):
                 return UserDetailSerializerV1
             elif self.action == 'create':
                 return UserCreateSerializerV1
+            elif self.action == 'update':
+                return UserUpdateSerializerV1
 
         return UserSerializer
 
