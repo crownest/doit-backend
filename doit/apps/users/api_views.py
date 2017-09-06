@@ -1,5 +1,5 @@
 # Third-Party
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 
 # Django
 from django.conf import settings
@@ -15,7 +15,11 @@ from users.serializers import (
 )
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(mixins.CreateModelMixin,
+                  mixins.RetrieveModelMixin,
+                  mixins.UpdateModelMixin,
+                  mixins.ListModelMixin,
+                  viewsets.GenericViewSet):
     queryset = User.objects.all()
 
     def get_queryset(self):
