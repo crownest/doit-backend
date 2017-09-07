@@ -2,9 +2,7 @@
 from rest_framework import viewsets, mixins
 
 # Django
-from django.conf import settings
 from django.core.mail import send_mail
-from django.core.urlresolvers import reverse
 
 # Local Django
 from users.models import User, ActivationKey
@@ -54,9 +52,6 @@ class UserViewSet(mixins.CreateModelMixin,
 
         # Create Activation Key
         activation_key = ActivationKeyModule.create_key(user=user)
-        activation_url = settings.DOMAIN + reverse('activation', kwargs={
-            'key': activation_key.key
-        })
 
         # Send Activation Mail
         MailModule.send_activation_mail(activation_key)
