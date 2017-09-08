@@ -7,6 +7,14 @@ djangorestframework==3.6.3
 djoser==0.6.0
 
 
+# Celery
+celery==4.1.0
+# amqp==2.1.1
+# billiard==3.5.0.3
+# kombu==4.1.0
+# pytz==2017.2
+# vine==1.1.4
+
 # Documentation
 mkdocs==0.16.3
 # Jinja2==2.9.6
