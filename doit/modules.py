@@ -10,6 +10,7 @@ from django.template.loader import render_to_string
 
 # Local Django
 from users.models import ActivationKey
+from doit.tasks import send_mail_task
 
 
 class ActivationKeyModule(object):
@@ -39,10 +40,6 @@ class ActivationKeyModule(object):
 class MailModule(object):
 
     @staticmethod
-    def send_mail(context):
-        send_mail(**context)
-
-    @staticmethod
     def send_activation_mail(activation_key):
         template_context = {
             'domain': settings.DOMAIN,
@@ -66,5 +63,5 @@ class MailModule(object):
             'from_email': settings.DEFAULT_FROM_EMAIL,
             'recipient_list': [activation_key.user.email]
         }
-        
-        MailModule.send_mail(context)
+
+        send_mail_task.delay(context, 'activation')
