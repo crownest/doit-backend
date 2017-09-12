@@ -1,5 +1,7 @@
 # Third-Party
-from rest_framework import viewsets, mixins
+from rest_framework.response import Response
+from rest_framework.decorators import detail_route
+from rest_framework import viewsets, mixins, status
 
 # Django
 from django.core.mail import send_mail
@@ -57,3 +59,31 @@ class UserViewSet(mixins.CreateModelMixin,
         MailModule.send_activation_mail(activation_key)
 
         return user
+
+    # Change Password
+    @detail_route(methods=['post'], url_path='password/change')
+    def change_password(self, request, pk=None):
+        user = self.get_object()
+        old_password = request.data.get('old_password', None)
+        new_password = request.data.get('new_password', None)
+        confirm_new_password = request.data.get('confirm_new_password', None)
+
+        content = {
+            'messsage': ''
+        }
+
+        if user.check_password(old_password):
+            if new_password == confirm_new_password:
+                user.set_password(new_password)
+                user.save()
+                content["messsage"] =
+                'Your password has been successfully changed'
+                return Response(content, status=status.HTTP_200_OK)
+            else:
+                content["messsage"] =
+                'The passwords you entered are not the same'
+                return Response(content, status=status.HTTP_406_NOT_ACCEPTABLE)
+        else:
+            content["messsage"] =
+            'The password you want to change is incorrect'
+            return Response(content, status=status.HTTP_400_BAD_REQUEST)
