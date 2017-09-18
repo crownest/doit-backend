@@ -11,7 +11,8 @@ from users.models import User, ActivationKey
 from doit.modules import ActivationKeyModule, MailModule
 from users.serializers import (
     UserSerializer,  UserListSerializerV1, UserCreateSerializerV1,
-    UserDetailSerializerV1, UserUpdateSerializerV1
+    UserDetailSerializerV1, UserUpdateSerializerV1,
+    UserPasswordChangeSerializer, UserPasswordChangeSerializerV1
 )
 
 
@@ -60,30 +61,23 @@ class UserViewSet(mixins.CreateModelMixin,
 
         return user
 
-    # Change Password
     @detail_route(methods=['post'], url_path='password/change')
     def change_password(self, request, pk=None):
         user = self.get_object()
-        old_password = request.data.get('old_password', None)
-        new_password = request.data.get('new_password', None)
-        confirm_new_password = request.data.get('confirm_new_password', None)
 
-        content = {
-            'messsage': ''
-        }
-
-        if user.check_password(old_password):
-            if new_password == confirm_new_password:
-                user.set_password(new_password)
-                user.save()
-                content["messsage"] =
-                'Your password has been successfully changed'
-                return Response(content, status=status.HTTP_200_OK)
-            else:
-                content["messsage"] =
-                'The passwords you entered are not the same'
-                return Response(content, status=status.HTTP_406_NOT_ACCEPTABLE)
+        if self.request.version == 'v1':
+            serializer = UserPasswordChangeSerializerV1(
+                data=request.data, context={'user': user}
+            )
         else:
-            content["messsage"] =
-            'The password you want to change is incorrect'
-            return Response(content, status=status.HTTP_400_BAD_REQUEST)
+            serializer = UserPasswordChangeSerializer(
+                data=request.data, context={'user': user}
+            )
+
+        if serializer.is_valid():
+            user.set_password(serializer.data['new_password'])
+            user.save()
+
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
