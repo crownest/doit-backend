@@ -1,6 +1,7 @@
 # Celery
 
-## **Installation of RabbitMQ**
+
+## Installation of RabbitMQ
 ```bash
 apt-get update
 apt-get install rabbitmq-server
@@ -9,7 +10,8 @@ apt-get install rabbitmq-server
 If you use another os: [RabbitMQ Installation for Other Distribution](https://www.rabbitmq.com/download.html)<br />
 Additional document: [Install and Manage RabbitMQ](https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-rabbitmq)
 
-## **How to Run Celery**
+
+## How to Run Celery
 ```bash
 celery worker -A doit
 ```
