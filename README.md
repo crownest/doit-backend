@@ -1,7 +1,7 @@
 # Welcome to Doit
 
 
-[Docs](docs/)
+[Docs](docs/index.md)
 
 
 ## Build Docs

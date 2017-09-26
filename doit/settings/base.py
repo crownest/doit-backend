@@ -41,8 +41,7 @@ INSTALLED_APPS = [
 
     # Internal Applications
     'tasks',
-    'users',
-
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -102,21 +101,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PACKAGE_ROOT, 'static/')
 
 
-# Documentation
+# Absolute filesystem path to the directory that will hold user-uploaded files.
 
-DOCUMENTATION_ROOT = 'docs_build'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-# Django Rest Framework
-
-REST_FRAMEWORK = {
-    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
-
-    'DEFAULT_PERMISSION_CLASSES': (
-       'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-       'rest_framework.authentication.SessionAuthentication',
-       'rest_framework.authentication.TokenAuthentication',
-    ),
-}
+from .app_settings import *
