@@ -13,8 +13,8 @@ Additional document: [Install and Manage RabbitMQ](https://www.digitalocean.com/
 
 ## Setting up RabbitMQ
 ```bash
-sudo rabbitmqctl add_vhost doit_vhost
-sudo rabbitmqctl set_permissions -p doit_vhost guest ".*" ".*" ".*"
+rabbitmqctl add_vhost doit_vhost
+rabbitmqctl set_permissions -p doit_vhost guest ".*" ".*" ".*"
 ```
 
 For further information of setting up RabbitMQ: [Setting up RabbitMQ](http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#setting-up-rabbitmq)

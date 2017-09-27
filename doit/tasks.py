@@ -1,14 +1,11 @@
-# Standart Library
-from __future__ import absolute_import
-
 # Django
 from django.core.mail import send_mail
 
 # Local Django
-from doit.celery import app
+from doit import celery_app
 
 
-@app.task
+@celery_app.task
 def send_mail_task(context, verb):
     """
     Context Format
