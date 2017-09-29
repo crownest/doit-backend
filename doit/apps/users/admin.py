@@ -18,7 +18,7 @@ class UserAdmin(_UserAdmin):
         }),
         (_('Permissions'), {
             'fields': (
-                'is_active', 'is_staff', 'is_verify',
+                'is_active', 'is_staff', 'is_verified',
                 'is_superuser', 'groups', 'user_permissions'
             )
         }),
@@ -39,9 +39,10 @@ class UserAdmin(_UserAdmin):
     )
 
     list_display = (
-        'first_name', 'last_name', 'email', 'is_active', 'is_verify', 'is_superuser'
+        'first_name', 'last_name', 'email',
+        'is_active', 'is_verified', 'is_superuser'
     )
-    list_filter = ('is_active',)
+    list_filter = ('is_active', 'is_verified', 'is_superuser')
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('first_name', 'last_name')
 
