@@ -4,6 +4,7 @@ from django.conf.urls import url, include
 from users import views
 
 # Local Django
+from doit.api_views import LoginView
 from doit.views import DocumentationView, ActivationView
 
 
@@ -18,9 +19,11 @@ urlpatterns = [
     # Api
     url(r'^api/', include('doit.api_urls')),
 
-    # Djoser
+    # Token
+    url(r'^api-auth/login', LoginView.as_view(), name='login'),
     url(r'^api-auth/', include('djoser.urls.authtoken')),
 
     # Activation
     url(r'^activation/(?P<key>\w+)/$', ActivationView.as_view(), name='activation'),
 ]
+#abi bir sn müsadenle
