@@ -26,4 +26,3 @@ urlpatterns = [
     # Activation
     url(r'^activation/(?P<key>\w+)/$', ActivationView.as_view(), name='activation'),
 ]
-#abi bir sn müsadenle

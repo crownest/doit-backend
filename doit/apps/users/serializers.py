@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            'id', 'email', 'first_name', 'last_name', 'is_active', 'is_verify'
+            'id', 'email', 'first_name', 'last_name', 'is_active', 'is_verified'
         )
 
 
@@ -25,7 +25,7 @@ class UserDetailSerializerV1(UserSerializer):
     class Meta:
         model = User
         fields = (
-            'id', 'email', 'first_name', 'last_name', 'is_active', 'is_verify'
+            'id', 'email', 'first_name', 'last_name', 'is_active', 'is_verified'
         )
 
 
