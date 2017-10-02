@@ -39,6 +39,12 @@ class UserViewSet(mixins.CreateModelMixin,
         else:
             return UserSerializer
 
+    def get_route_serializer_class(self):
+        if self.action == 'change_password':
+            return UserPasswordChangeSerializer
+        else:
+            return UserSerializer
+
     def get_permissions(self):
         permissions = super(UserViewSet, self).get_permissions()
 
@@ -61,10 +67,12 @@ class UserViewSet(mixins.CreateModelMixin,
 
         return user
 
-    @detail_route(methods=['post'], url_path='password/change')
+    @detail_route(methods=['post'], url_path='password/change',
+                  url_name='change-password')
     def change_password(self, request, pk=None):
         user = self.get_object()
-        serializer = UserPasswordChangeSerializer(
+        serializer_class = self.get_route_serializer_class()
+        serializer = serializer_class(
             data=request.data, context={'user': user}
         )
 
@@ -91,17 +99,8 @@ class UserViewSetV1(UserViewSet):
         else:
             return UserSerializer
 
-    @detail_route(methods=['post'], url_path='password/change')
-    def change_password(self, request, pk=None):
-        user = self.get_object()
-        serializer = UserPasswordChangeSerializerV1(
-            data=request.data, context={'user': user}
-        )
-
-        if serializer.is_valid():
-            user.set_password(serializer.data['new_password'])
-            user.save()
-
-            return Response(status=status.HTTP_200_OK)
+    def get_route_serializer_class(self):
+        if self.action == 'change_password':
+            return UserPasswordChangeSerializerV1
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return UserSerializer
