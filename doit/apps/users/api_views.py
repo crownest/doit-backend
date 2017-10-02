@@ -10,9 +10,10 @@ from django.core.mail import send_mail
 from users.models import User, ActivationKey
 from doit.modules import ActivationKeyModule, MailModule
 from users.serializers import (
-    UserSerializer,  UserListSerializerV1, UserCreateSerializerV1,
-    UserDetailSerializerV1, UserUpdateSerializerV1,
-    UserPasswordChangeSerializer, UserPasswordChangeSerializerV1
+    UserSerializer, UserListSerializer, UserCreateSerializer,
+    UserDetailSerializer, UserUpdateSerializer, UserPasswordChangeSerializer,
+    UserListSerializerV1, UserCreateSerializerV1,
+    UserDetailSerializerV1, UserUpdateSerializerV1, UserPasswordChangeSerializerV1
 )
 
 
@@ -27,17 +28,16 @@ class UserViewSet(mixins.CreateModelMixin,
         return self.queryset.filter(id=self.request.user.id)
 
     def get_serializer_class(self):
-        if self.request.version == 'v1':
-            if self.action == 'list':
-                return UserListSerializerV1
-            elif self.action == 'retrieve':
-                return UserDetailSerializerV1
-            elif self.action == 'create':
-                return UserCreateSerializerV1
-            elif self.action == 'update':
-                return UserUpdateSerializerV1
-
-        return UserSerializer
+        if self.action == 'list':
+            return UserListSerializer
+        elif self.action == 'retrieve':
+            return UserDetailSerializer
+        elif self.action == 'create':
+            return UserCreateSerializer
+        elif self.action == 'update':
+            return UserUpdateSerializer
+        else:
+            return UserSerializer
 
     def get_permissions(self):
         permissions = super(UserViewSet, self).get_permissions()
@@ -64,15 +64,39 @@ class UserViewSet(mixins.CreateModelMixin,
     @detail_route(methods=['post'], url_path='password/change')
     def change_password(self, request, pk=None):
         user = self.get_object()
+        serializer = UserPasswordChangeSerializer(
+            data=request.data, context={'user': user}
+        )
 
-        if self.request.version == 'v1':
-            serializer = UserPasswordChangeSerializerV1(
-                data=request.data, context={'user': user}
-            )
+        if serializer.is_valid():
+            user.set_password(serializer.data['new_password'])
+            user.save()
+
+            return Response(status=status.HTTP_200_OK)
         else:
-            serializer = UserPasswordChangeSerializer(
-                data=request.data, context={'user': user}
-            )
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserViewSetV1(UserViewSet):
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return UserListSerializerV1
+        elif self.action == 'retrieve':
+            return UserDetailSerializerV1
+        elif self.action == 'create':
+            return UserCreateSerializerV1
+        elif self.action == 'update':
+            return UserUpdateSerializerV1
+        else:
+            return UserSerializer
+
+    @detail_route(methods=['post'], url_path='password/change')
+    def change_password(self, request, pk=None):
+        user = self.get_object()
+        serializer = UserPasswordChangeSerializerV1(
+            data=request.data, context={'user': user}
+        )
 
         if serializer.is_valid():
             user.set_password(serializer.data['new_password'])

@@ -5,6 +5,8 @@ from rest_framework import serializers
 from users.models import User
 
 
+# Base
+
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -14,22 +16,18 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
 
-class UserListSerializerV1(UserSerializer):
+class UserListSerializer(UserSerializer):
 
     class Meta:
         model = User
         fields = ('id', 'email', 'first_name', 'last_name')
 
 
-class UserDetailSerializerV1(UserSerializer):
-    class Meta:
-        model = User
-        fields = (
-            'id', 'email', 'first_name', 'last_name', 'is_active', 'is_verified'
-        )
+class UserDetailSerializer(UserSerializer):
+    pass
 
 
-class UserCreateSerializerV1(UserSerializer):
+class UserCreateSerializer(UserSerializer):
 
     class Meta:
         model = User
@@ -39,7 +37,7 @@ class UserCreateSerializerV1(UserSerializer):
         extra_kwargs = {'password': {'write_only': True}}
 
 
-class UserUpdateSerializerV1(UserSerializer):
+class UserUpdateSerializer(UserSerializer):
 
     class Meta:
         model = User
@@ -78,9 +76,23 @@ class UserPasswordChangeSerializer(serializers.Serializer):
         return value
 
 
-class UserPasswordChangeSerializerV1(UserPasswordChangeSerializer):
+# V1
 
-    class Meta:
-        fields = (
-            'old_password', 'new_password', 'confirm_new_password'
-        )
+class UserListSerializerV1(UserListSerializer):
+    pass
+
+
+class UserDetailSerializerV1(UserDetailSerializer):
+    pass
+
+
+class UserCreateSerializerV1(UserCreateSerializer):
+    pass
+
+
+class UserUpdateSerializerV1(UserUpdateSerializer):
+    pass
+
+
+class UserPasswordChangeSerializerV1(UserPasswordChangeSerializer):
+    pass

@@ -5,13 +5,13 @@ from django.conf.urls import url, include
 from rest_framework import routers
 
 # Local Django
-from users.api_views import UserViewSet
+from users.api_views import UserViewSetV1
 from tasks.api_views import TaskViewSet, ReminderViewSet
 
 router_V1 = routers.DefaultRouter()
 
 LIST_V1 = [
-    (r'users', UserViewSet),
+    (r'users', UserViewSetV1),
     (r'tasks', TaskViewSet),
     (r'reminders', ReminderViewSet)
 ]
