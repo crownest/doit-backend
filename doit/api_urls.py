@@ -12,9 +12,9 @@ from tasks.api_views import TaskViewSetV1, ReminderViewSetV1
 router_V1 = routers.DefaultRouter()
 
 LIST_V1 = [
-    (r'users', UserViewSetV1, 'users-v1'),
-    (r'tasks', TaskViewSetV1, 'tasks-v1'),
-    (r'reminders', ReminderViewSetV1, 'reminders-v1')
+    (r'users', UserViewSetV1, 'users'),
+    (r'tasks', TaskViewSetV1, 'tasks'),
+    (r'reminders', ReminderViewSetV1, 'reminders')
 ]
 
 for router in LIST_V1:
