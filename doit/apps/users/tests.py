@@ -57,6 +57,18 @@ class UserAPIV1TestCase(APITestCase):
         self.assertTrue(user.check_password(dummy_data.get('password', None)))
         self.assertFalse(user.is_verified)
 
+    def test_activation_user(self):
+        self.assertFalse(self.user.is_verified)
+        self.assertFalse(self.activation_key.is_used)
+
+        url = reverse('activation', kwargs={'key': self.activation_key.key})
+        response = self.client.get(url)
+        self.user.refresh_from_db()
+        self.activation_key.refresh_from_db()
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(self.user.is_verified)
+        self.assertTrue(self.activation_key.is_used)
+
     def test_update_user(self):
         dummy_data = {
             'email': 'example@unicrow.com',
