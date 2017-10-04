@@ -52,7 +52,7 @@ class ActivationView(TemplateView):
 
         if self.activation_key:
             # User verified.
-            self.activation_key.user.is_verify = True
+            self.activation_key.user.is_verified = True
             self.activation_key.user.save()
 
             # Key disabled.
