@@ -77,4 +77,8 @@ pip install -r requirements/dev.txt
 **Run tests**
 ```bash
 ./manage.py test doit.apps
+./manage.py test doit.apps -v 2
+./manage.py test doit.apps --verbosity=2
 ```
+
+Note: Verbosity level (-v or --verbosity); 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output
