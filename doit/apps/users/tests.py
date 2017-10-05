@@ -13,8 +13,8 @@ from doit.modules import ActivationKeyModule
 
 class UserAPIV1TestCase(APITestCase):
     dummy_data = {
-        'email': 'crownest@unicrow.com',
-        'first_name': 'Crownest',
+        'email': 'doit@unicrow.com',
+        'first_name': 'Doit',
         'last_name': 'Apps',
         'password': 'test'
     }
@@ -38,8 +38,8 @@ class UserAPIV1TestCase(APITestCase):
 
     def test_create_user(self):
         dummy_data = {
-            'email': 'doit@unicrow.com',
-            'first_name': 'Doit',
+            'email': 'crownest@unicrow.com',
+            'first_name': 'Crownest',
             'last_name': 'Apps',
             'password': 'test'
         }
@@ -47,7 +47,7 @@ class UserAPIV1TestCase(APITestCase):
 
         # Create User
         response = self.client.post(url, dummy_data, format='json')
-        self.assertEqual(201, response.status_code)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         # Check User Info
         user = User.objects.get(email=dummy_data.get('email', None))
@@ -65,7 +65,7 @@ class UserAPIV1TestCase(APITestCase):
         response = self.client.get(url)
         self.user.refresh_from_db()
         self.activation_key.refresh_from_db()
-        self.assertEqual(200, response.status_code)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(self.user.is_verified)
         self.assertTrue(self.activation_key.is_used)
 
@@ -80,7 +80,7 @@ class UserAPIV1TestCase(APITestCase):
 
         response = self.client.put(url, dummy_data, format='json')
         self.user.refresh_from_db()
-        self.assertEqual(200, response.status_code)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, dummy_data)
         self.assertEqual(self.user.email, dummy_data.get('email', None))
         self.assertEqual(self.user.first_name, dummy_data.get('first_name', None))
