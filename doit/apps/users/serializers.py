@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 # Local Django
 from users.models import User
+from django.contrib.auth import password_validation
 
 
 # Base
@@ -61,6 +62,10 @@ class UserPasswordChangeSerializer(serializers.Serializer):
             raise serializers.ValidationError(
                 "The two password fields didn't match."
             )
+
+        password_validation.validate_password(
+            self.initial_data['confirm_new_password']
+        )
 
         return value
 
