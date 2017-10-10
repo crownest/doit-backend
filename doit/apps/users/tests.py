@@ -36,6 +36,13 @@ class UserAPIV1TestCase(APITestCase):
     def api_authentication(self):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
 
+    def test_list_user(self):
+          url = reverse('v1:users-list')
+          self.api_authentication()
+
+          response = self.client.get(url)
+          self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_create_user(self):
         dummy_data = {
             'email': 'crownest@unicrow.com',
