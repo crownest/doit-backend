@@ -56,7 +56,7 @@ DATABASES = {
 
 # Domain
 
-DOMAIN = 'http://doit.unicrow.com'
+DOMAIN = 'http://api.doit.unicrow.com'
 
 
 # Email

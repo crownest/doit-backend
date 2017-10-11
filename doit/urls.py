@@ -17,11 +17,11 @@ urlpatterns = [
     url(r'^docs/(?P<path>.*)$', DocumentationView.as_view(), name='docs'),
 
     # Api
-    url(r'^api/', include('doit.api_urls')),
+    url(r'^', include('doit.api_urls')),
 
     # Token
-    url(r'^api-auth/login', LoginView.as_view(), name='login'),
-    url(r'^api-auth/', include('djoser.urls.authtoken')),
+    url(r'^auth/login', LoginView.as_view(), name='login'),
+    url(r'^auth/', include('djoser.urls.authtoken')),
 
     # Activation
     url(r'^activation/(?P<key>\w+)/$', ActivationView.as_view(), name='activation'),
