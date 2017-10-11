@@ -14,6 +14,12 @@ ADMINS = (
     # ("Your Name", "your_email@example.com"),
 )
 
+
+INSTALLED_APPS += (
+
+)
+
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/validators/
 

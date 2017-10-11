@@ -15,7 +15,6 @@ ADMINS = (
 )
 
 
-# App used only at development
 INSTALLED_APPS += (
 
 )
