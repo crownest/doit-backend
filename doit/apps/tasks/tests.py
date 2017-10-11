@@ -34,6 +34,12 @@ class TaskAPIV1TestCase(APITestCase):
     def api_authentication(self):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
 
+    def test_list_task(self):
+        url = reverse('v1:tasks-list')
+
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_retrieve_task(self):
         url = reverse('v1:tasks-detail', kwargs={'pk': self.task.id})
 
