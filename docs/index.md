@@ -1,6 +1,6 @@
 # Welcome to Doit
 
-**Staging Domain**: [http://doit.unicrow.com](http://doit.unicrow.com)
+**Staging Domain**: [http://api.doit.unicrow.com](http://api.doit.unicrow.com)
 
 
 ## Api

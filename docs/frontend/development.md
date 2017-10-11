@@ -40,8 +40,8 @@ ln -s /usr/bin/nodejs /usr/bin/node
 
 **Create project and change directory**
 ```bash
-mkdir Doit
-cd Doit
+mkdir doit-backend
+cd doit-backend
 ```
 
 **Get source code**
