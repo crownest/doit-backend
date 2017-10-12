@@ -151,3 +151,12 @@ ENV/
 # mkdocs documentation
 site/
 docs_build/
+
+# Frontend
+node_modules
+dist
+
+### Sass ###
+.sass-cache/
+*.css.map
+main.css

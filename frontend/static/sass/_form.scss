@@ -1,0 +1,37 @@
+input {
+  background: transparent;
+  border: transparent;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $df-color;
+  line-height: transparent;
+
+  &:focus {
+    outline: transparent;
+  }
+}
+
+textarea {
+  background: transparent;
+  border: transparent;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $df-color;
+  line-height: transparent;
+
+  &:focus {
+    outline: transparent;
+  }
+}
+
+button {
+  background: transparent;
+  border: 1px solid $df-color;
+  padding: 7px 12px 7px 12px;
+  margin: 125px 0px 0px 0px;
+  color: #4a4a4a;
+
+  &:focus, &:active {
+    outline: transparent;
+  }
+}
