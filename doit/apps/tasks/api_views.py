@@ -15,11 +15,11 @@ from tasks.serializers import (
 )
 
 
-class ReminderViewSet(mixins.CreateModelMixin,
+class ReminderViewSet(mixins.ListModelMixin,
+                      mixins.CreateModelMixin,
                       mixins.RetrieveModelMixin,
                       mixins.UpdateModelMixin,
                       mixins.DestroyModelMixin,
-                      mixins.ListModelMixin,
                       viewsets.GenericViewSet):
     queryset = Reminder.objects.all()
 
@@ -54,11 +54,11 @@ class ReminderViewSetV1(ReminderViewSet):
             return ReminderSerializer
 
 
-class TaskViewSet(mixins.CreateModelMixin,
+class TaskViewSet(mixins.ListModelMixin,
+                  mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,
                   mixins.UpdateModelMixin,
                   mixins.DestroyModelMixin,
-                  mixins.ListModelMixin,
                   viewsets.GenericViewSet):
     queryset = Task.objects.all()
 

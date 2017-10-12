@@ -17,10 +17,10 @@ from users.serializers import (
 )
 
 
-class UserViewSet(mixins.CreateModelMixin,
+class UserViewSet(mixins.ListModelMixin,
+                  mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,
                   mixins.UpdateModelMixin,
-                  mixins.ListModelMixin,
                   viewsets.GenericViewSet):
     queryset = User.objects.all()
 
