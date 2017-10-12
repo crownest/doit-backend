@@ -40,6 +40,20 @@ class TaskAPIV1TestCase(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_create_task(self):
+        url = reverse('v1:tasks-list')
+
+        response = self.client.post(url, self.dummy_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(
+            response.data.get('title', None),
+            self.dummy_data.get('title', None)
+        )
+        self.assertEqual(
+            response.data.get('description', None),
+            self.dummy_data.get('description', None)
+        )
+
     def test_retrieve_task(self):
         url = reverse('v1:tasks-detail', kwargs={'pk': self.task.id})
 
