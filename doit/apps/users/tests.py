@@ -76,6 +76,19 @@ class UserAPIV1TestCase(APITestCase):
         self.assertTrue(self.user.is_verified)
         self.assertTrue(self.activation_key.is_used)
 
+    def test_retrieve_user(self):
+        url = reverse('v1:users-detail', kwargs={'pk': self.user.id})
+        self.api_authentication()
+
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data.get('id', None), self.user.id)
+        self.assertEqual(response.data.get('email', None), self.user.email)
+        self.assertEqual(response.data.get('first_name', None), self.user.first_name)
+        self.assertEqual(response.data.get('last_name', None), self.user.last_name)
+        self.assertEqual(response.data.get('is_active', None), self.user.is_active)
+        self.assertEqual(response.data.get('is_verified', None), self.user.is_verified)
+
     def test_update_user(self):
         dummy_data = {
             'email': 'example@unicrow.com',
