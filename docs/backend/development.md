@@ -64,9 +64,9 @@ pip install -r requirements/dev.txt
 ./manage.py migrate
 ```
 
-**Create superuser**
+**Load dummy data**
 ```bash
-./manage.py createsuperuser
+./manage.py loaddata data/db.json
 ```
 
 **Run project**
