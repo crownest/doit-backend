@@ -6,8 +6,6 @@ from users.models import User
 from django.contrib.auth import password_validation
 
 
-# Base
-
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -24,7 +22,7 @@ class UserListSerializer(UserSerializer):
         fields = ('id', 'email', 'first_name', 'last_name')
 
 
-class UserDetailSerializer(UserSerializer):
+class UserRetrieveSerializer(UserSerializer):
     pass
 
 
@@ -79,25 +77,3 @@ class UserPasswordChangeSerializer(serializers.Serializer):
             )
 
         return value
-
-
-# V1
-
-class UserListSerializerV1(UserListSerializer):
-    pass
-
-
-class UserDetailSerializerV1(UserDetailSerializer):
-    pass
-
-
-class UserCreateSerializerV1(UserCreateSerializer):
-    pass
-
-
-class UserUpdateSerializerV1(UserUpdateSerializer):
-    pass
-
-
-class UserPasswordChangeSerializerV1(UserPasswordChangeSerializer):
-    pass

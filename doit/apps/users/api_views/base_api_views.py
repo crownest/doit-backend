@@ -11,9 +11,9 @@ from users.models import User, ActivationKey
 from doit.modules import ActivationKeyModule, MailModule
 from users.serializers import (
     UserSerializer, UserListSerializer, UserCreateSerializer,
-    UserDetailSerializer, UserUpdateSerializer, UserPasswordChangeSerializer,
+    UserRetrieveSerializer, UserUpdateSerializer, UserPasswordChangeSerializer,
     UserListSerializerV1, UserCreateSerializerV1,
-    UserDetailSerializerV1, UserUpdateSerializerV1, UserPasswordChangeSerializerV1
+    UserRetrieveSerializerV1, UserUpdateSerializerV1, UserPasswordChangeSerializerV1
 )
 
 
@@ -30,10 +30,10 @@ class UserViewSet(mixins.ListModelMixin,
     def get_serializer_class(self):
         if self.action == 'list':
             return UserListSerializer
-        elif self.action == 'retrieve':
-            return UserDetailSerializer
         elif self.action == 'create':
             return UserCreateSerializer
+        elif self.action == 'retrieve':
+            return UserRetrieveSerializer
         elif self.action == 'update':
             return UserUpdateSerializer
         else:
@@ -83,24 +83,3 @@ class UserViewSet(mixins.ListModelMixin,
             return Response(status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class UserViewSetV1(UserViewSet):
-
-    def get_serializer_class(self):
-        if self.action == 'list':
-            return UserListSerializerV1
-        elif self.action == 'retrieve':
-            return UserDetailSerializerV1
-        elif self.action == 'create':
-            return UserCreateSerializerV1
-        elif self.action == 'update':
-            return UserUpdateSerializerV1
-        else:
-            return UserSerializer
-
-    def get_route_serializer_class(self):
-        if self.action == 'change_password':
-            return UserPasswordChangeSerializerV1
-        else:
-            return UserSerializer
