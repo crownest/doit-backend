@@ -52,3 +52,9 @@ class TaskAPIV1TestCase(TaskAPITestCase):
             response.data.get('description', None),
             self.dummy_data.get('description', None)
         )
+
+    def test_delete_task(self):
+        url = reverse('v1:tasks-detail', kwargs={'pk': self.task.id})
+
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
