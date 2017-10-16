@@ -1,3 +1,3 @@
 # Local Django
-from .base_tests import TaskAPITestCase
-from .v1_tests import TaskAPIV1TestCase
+from .base_tests import ReminderAPITestCase, TaskAPITestCase
+from .v1_tests import ReminderAPIV1TestCase, TaskAPIV1TestCase

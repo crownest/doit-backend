@@ -5,7 +5,16 @@ from rest_framework import status
 from django.urls import reverse
 
 # Local Django
-from .base_tests import TaskAPITestCase
+from .base_tests import ReminderAPITestCase, TaskAPITestCase
+
+
+class ReminderAPIV1TestCase(ReminderAPITestCase):
+
+    def test_list_reminder(self):
+        url = reverse('v1:reminders-list')
+
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
 class TaskAPIV1TestCase(TaskAPITestCase):
