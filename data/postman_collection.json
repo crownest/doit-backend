@@ -1,0 +1,1318 @@
+{
+	"id": "72eea94c-0592-35ac-565f-d535c7a7580c",
+	"name": "doit-backend",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "Local",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"order": [
+				"7553c1ce-8aa2-c35c-997f-48d088b202f3",
+				"11b4ba7b-ee11-6394-815f-fbeca18de40f",
+				"ec7aeecf-587c-c2f2-2228-eb94d5c959a2",
+				"b564b033-148d-4b93-88cb-ec16b7d77c96",
+				"1c1ce878-8140-e7f1-34b0-78d69e001402",
+				"d2e1a3a5-9f76-14f5-5cd2-fd537416a2a4",
+				"cba63f78-d881-64c7-185c-d9c36b85cb1a",
+				"bf3fe986-acab-a78c-1edd-8e4ac883fe95",
+				"1e5d413b-546b-5680-4fc0-09f77200327f",
+				"8a690417-f6b2-976d-4c8d-ece02b22fff5",
+				"c8f486ff-8559-3ee2-8600-a8672ac70895",
+				"e413aac7-9a53-3706-96d2-1556e2c3b709",
+				"71c270c9-65a8-3a06-9f26-083ac528ea59",
+				"5c70fea5-24ca-186a-bc23-5c169099f69a",
+				"8adb1546-f392-0326-ef53-336d1f7508a9",
+				"924691d2-762a-68d8-0b52-62152b777caa"
+			],
+			"owner": "846179",
+			"folder": "8c4c435f-77ee-18a5-f304-c184e82a5166",
+			"folders_order": [],
+			"id": "f76d5025-518c-3fe6-ec3c-dc118eeae54b"
+		},
+		{
+			"name": "Staging",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"order": [
+				"772b3829-985c-971c-ae70-a05f6c55d767",
+				"69f3749c-8b48-31fc-0b4c-c5814d854cc2",
+				"34ff4abb-cac3-32de-3361-2e0ad3f0a6b7",
+				"109d6eb9-b82e-deb1-92b2-38e2c789aaa2",
+				"5ef02143-f80c-654b-65a0-a598992e0287",
+				"82f04377-6d97-1ef9-52fc-677b0e208b96",
+				"b6db3c02-8c7b-c93a-fde6-c7f3a17290cb",
+				"bd127f2f-8cf2-0921-c32d-18657cfee778",
+				"4b4eb891-10a2-4393-20f0-3fb0261b46fa",
+				"af84e715-39c9-d5e7-ff53-951e7ed8597a",
+				"a4bb534b-8355-33cd-6297-778c7c52588a",
+				"7cc87880-af3d-bf12-15c8-d67bebb1fb37",
+				"5b097bd2-4e7c-d973-9818-2fe83acaa712",
+				"cf5b9612-fc04-daec-f755-bd127d29d8ee",
+				"2bdfa65c-d658-f4ea-9e44-50ccb6319e10",
+				"47fa7a1c-8063-2216-2771-c4f2eee1415a"
+			],
+			"owner": "846179",
+			"folder": "8c4c435f-77ee-18a5-f304-c184e82a5166",
+			"folders_order": [],
+			"id": "e68a28dc-7359-0184-e621-2fe3db1dcec0"
+		},
+		{
+			"name": "v1",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"order": [],
+			"owner": "846179",
+			"folders_order": [
+				"f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+				"e68a28dc-7359-0184-e621-2fe3db1dcec0"
+			],
+			"id": "8c4c435f-77ee-18a5-f304-c184e82a5166"
+		}
+	],
+	"folders_order": [
+		"8c4c435f-77ee-18a5-f304-c184e82a5166"
+	],
+	"timestamp": 1502266112244,
+	"owner": "846179",
+	"public": false,
+	"requests": [
+		{
+			"id": "109d6eb9-b82e-deb1-92b2-38e2c789aaa2",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com0/v1/users/1/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164978716,
+			"name": "User Retrieve",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "\n{\n    \"email\": \"kenansubasiceng@gmail.com\",\n    \"first_name\": \"Kenan\",\n    \"last_name\": \"Subaşı\",\n    \"password\": \"25442544a\"\n}"
+		},
+		{
+			"id": "11b4ba7b-ee11-6394-815f-fbeca18de40f",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/users/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164415419,
+			"name": "User List",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "\n{\n    \"email\": \"kenansubasiceng@gmail.com\",\n    \"first_name\": \"Kenan\",\n    \"last_name\": \"Subaşı\",\n    \"password\": \"25442544a\"\n}"
+		},
+		{
+			"id": "1c1ce878-8140-e7f1-34b0-78d69e001402",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/users/1/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166683567,
+			"name": "User Update",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"email\": \"doit@unicrow.com\",\n    \"first_name\": \"Doit\",\n    \"last_name\": \"Apps\"\n}\n"
+		},
+		{
+			"id": "1e5d413b-546b-5680-4fc0-09f77200327f",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/tasks/1/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164627694,
+			"name": "Task Retrieve",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": []
+		},
+		{
+			"id": "2bdfa65c-d658-f4ea-9e44-50ccb6319e10",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/reminders/4/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166851020,
+			"name": "Reminder Update",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"date\": \"2017-10-19T15:00:00Z\"\n}\n"
+		},
+		{
+			"id": "34ff4abb-cac3-32de-3361-2e0ad3f0a6b7",
+			"headers": "Accept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/users/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166820920,
+			"name": "User Create",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"email\": \"doit@unicrow.com\",\n    \"first_name\": \"Doit\",\n    \"last_name\": \"Apps\",\n    \"password\": \"doitapps\"\n}\n"
+		},
+		{
+			"id": "47fa7a1c-8063-2216-2771-c4f2eee1415a",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/reminders/4/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508165063063,
+			"name": "Reminder Delete",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "4b4eb891-10a2-4393-20f0-3fb0261b46fa",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/tasks/1/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508165015519,
+			"name": "Task Retrieve",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": []
+		},
+		{
+			"id": "5b097bd2-4e7c-d973-9818-2fe83acaa712",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/reminders/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166845395,
+			"name": "Reminder Create",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n\t\"task\": 1,\n    \"date\": \"2017-10-18T16:00:00Z\"\n}\n"
+		},
+		{
+			"id": "5c70fea5-24ca-186a-bc23-5c169099f69a",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/reminders/1/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164722453,
+			"name": "Reminder Retrieve",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n\t\"task\": 45,\n    \"date\": \"2017-10-15T12:59:44Z\"\n}"
+		},
+		{
+			"id": "5ef02143-f80c-654b-65a0-a598992e0287",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/users/1/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166825882,
+			"name": "User Update",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"email\": \"doit@unicrow.com\",\n    \"first_name\": \"Doit\",\n    \"last_name\": \"Apps\"\n}\n"
+		},
+		{
+			"id": "69f3749c-8b48-31fc-0b4c-c5814d854cc2",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/users/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164964146,
+			"name": "User List",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "\n{\n    \"email\": \"kenansubasiceng@gmail.com\",\n    \"first_name\": \"Kenan\",\n    \"last_name\": \"Subaşı\",\n    \"password\": \"25442544a\"\n}"
+		},
+		{
+			"id": "71c270c9-65a8-3a06-9f26-083ac528ea59",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/reminders/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166804894,
+			"name": "Reminder Create",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n\t\"task\": 1,\n    \"date\": \"2017-10-18T16:00:00Z\"\n}\n"
+		},
+		{
+			"id": "7553c1ce-8aa2-c35c-997f-48d088b202f3",
+			"headers": "Accept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/auth/login/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166694329,
+			"name": "Token",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n  \"email\": \"doit@unicrow.com\",\n  \"password\": \"doitapps\"\n}\n"
+		},
+		{
+			"id": "772b3829-985c-971c-ae70-a05f6c55d767",
+			"headers": "Accept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/auth/login/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166816156,
+			"name": "Token",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n  \"email\": \"doit@unicrow.com\",\n  \"password\": \"doitapps\"\n}\n"
+		},
+		{
+			"id": "7cc87880-af3d-bf12-15c8-d67bebb1fb37",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/reminders/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508165035136,
+			"name": "Reminder List",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n\t\"task\": 45,\n    \"date\": \"2017-10-15T12:59:44Z\"\n}"
+		},
+		{
+			"id": "82f04377-6d97-1ef9-52fc-677b0e208b96",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/users/1/password/change/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166828192,
+			"name": "User Password Change",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"old_password\": \"doitappsx\",\n    \"new_password\": \"appsdoit\",\n    \"confirm_new_password\": \"appsdoit\"\n}\n"
+		},
+		{
+			"id": "8a690417-f6b2-976d-4c8d-ece02b22fff5",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/tasks/3/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166798895,
+			"name": "Task Update",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"title\": \"Drink Tea\",\n    \"description\": \"Milk Oolong\"\n}\n"
+		},
+		{
+			"id": "8adb1546-f392-0326-ef53-336d1f7508a9",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/reminders/4/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166809970,
+			"name": "Reminder Update",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"date\": \"2017-10-19T15:00:00Z\"\n}\n"
+		},
+		{
+			"id": "924691d2-762a-68d8-0b52-62152b777caa",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/reminders/4/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164748172,
+			"name": "Reminder Delete",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "a4bb534b-8355-33cd-6297-778c7c52588a",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/tasks/3/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508165028717,
+			"name": "Task Delete",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "af84e715-39c9-d5e7-ff53-951e7ed8597a",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/tasks/3/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508167199167,
+			"name": "Task Update",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"title\": \"Drink Tea\",\n    \"description\": \"Milk Oolong\"\n}\n"
+		},
+		{
+			"id": "b564b033-148d-4b93-88cb-ec16b7d77c96",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/users/1/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164437283,
+			"name": "User Retrieve",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "\n{\n    \"email\": \"kenansubasiceng@gmail.com\",\n    \"first_name\": \"Kenan\",\n    \"last_name\": \"Subaşı\",\n    \"password\": \"25442544a\"\n}"
+		},
+		{
+			"id": "b6db3c02-8c7b-c93a-fde6-c7f3a17290cb",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/tasks/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508165003001,
+			"name": "Task List",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": []
+		},
+		{
+			"id": "bd127f2f-8cf2-0921-c32d-18657cfee778",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/tasks/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508167188787,
+			"name": "Task Create",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"title\": \"Drink Tea\",\n    \"description\": \"Chai Masala\"\n}\n"
+		},
+		{
+			"id": "bf3fe986-acab-a78c-1edd-8e4ac883fe95",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/tasks/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166676179,
+			"name": "Task Create",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"title\": \"Drink Tea\",\n    \"description\": \"Chai Masala\"\n}\n"
+		},
+		{
+			"id": "c8f486ff-8559-3ee2-8600-a8672ac70895",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/tasks/3/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164667473,
+			"name": "Task Delete",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "cba63f78-d881-64c7-185c-d9c36b85cb1a",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/tasks/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164477271,
+			"name": "Task List",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": []
+		},
+		{
+			"id": "cf5b9612-fc04-daec-f755-bd127d29d8ee",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/reminders/1/",
+			"folder": "e68a28dc-7359-0184-e621-2fe3db1dcec0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508165050874,
+			"name": "Reminder Retrieve",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n\t\"task\": 45,\n    \"date\": \"2017-10-15T12:59:44Z\"\n}"
+		},
+		{
+			"id": "d2e1a3a5-9f76-14f5-5cd2-fd537416a2a4",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/users/1/password/change/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166681329,
+			"name": "User Password Change",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"old_password\": \"doitapps\",\n    \"new_password\": \"appsdoit\",\n    \"confirm_new_password\": \"appsdoit\"\n}\n"
+		},
+		{
+			"id": "e413aac7-9a53-3706-96d2-1556e2c3b709",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/reminders/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508164680602,
+			"name": "Reminder List",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n\t\"task\": 45,\n    \"date\": \"2017-10-15T12:59:44Z\"\n}"
+		},
+		{
+			"id": "ec7aeecf-587c-c2f2-2228-eb94d5c959a2",
+			"headers": "Accept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/users/",
+			"folder": "f76d5025-518c-3fe6-ec3c-dc118eeae54b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508166689255,
+			"name": "User Create",
+			"description": "",
+			"collectionId": "72eea94c-0592-35ac-565f-d535c7a7580c",
+			"responses": [],
+			"rawModeData": "{\n    \"email\": \"doit@unicrow.com\",\n    \"first_name\": \"Doit\",\n    \"last_name\": \"Apps\",\n    \"password\": \"doitapps\"\n}\n"
+		}
+	]
+}
