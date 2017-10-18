@@ -66,6 +66,20 @@ class TaskAPIV1TestCase(TaskAPITestCase):
             self.dummy_data.get('description', None)
         )
 
+    def test_update_task(self):
+        dummy_data = {
+            'title': 'Drink Tea',
+            'description': 'Chai Masala'
+        }
+        url = reverse('v1:tasks-detail', kwargs={'pk': self.task.id})
+
+        response = self.client.put(url, dummy_data, format='json')
+        self.task.refresh_from_db()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, dummy_data)
+        self.assertEqual(response.data.get('title', None), self.task.title)
+        self.assertEqual(response.data.get('description', None), self.task.description)
+
     def test_delete_task(self):
         url = reverse('v1:tasks-detail', kwargs={'pk': self.task.id})
 
