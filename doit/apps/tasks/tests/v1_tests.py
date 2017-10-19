@@ -30,6 +30,7 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
             self.dummy_data.get('date', None)
         )
 
+
 class TaskAPIV1TestCase(TaskAPITestCase):
 
     def test_list_task(self):
@@ -57,14 +58,9 @@ class TaskAPIV1TestCase(TaskAPITestCase):
 
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(
-            response.data.get('title', None),
-            self.dummy_data.get('title', None)
-        )
-        self.assertEqual(
-            response.data.get('description', None),
-            self.dummy_data.get('description', None)
-        )
+        self.assertEqual(response.data.get('id', None), self.task.id)
+        self.assertEqual(response.data.get('title', None), self.task.title)
+        self.assertEqual(response.data.get('description', None), self.task.description)
 
     def test_update_task(self):
         dummy_data = {
