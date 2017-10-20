@@ -1,3 +1,7 @@
+# Standart Library
+import pytz
+import datetime
+
 # Third-Party
 from rest_framework.test import APITestCase
 from rest_framework.authtoken.models import Token
@@ -26,14 +30,19 @@ class ReminderAPITestCase(APITestCase):
         )
 
         # Create Dummy Data
-        self.date = "2017-11-15T12:59:44Z"
+        self.date = '2017-11-15T12:59:44Z'
         self.dummy_data = {
             'task': self.task.id,
             'date': self.date
         }
 
         # Create Reminder
-        self.reminder = Reminder.objects.create(task=self.task, date=self.date)
+        self.reminder = Reminder.objects.create(
+            task=self.task,
+            date=pytz.utc.localize(
+                datetime.datetime.strptime(self.date, '%Y-%m-%dT%H:%M:%SZ')
+            )
+        )
 
     def api_authentication(self):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)

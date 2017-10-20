@@ -37,7 +37,10 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data.get('id', None), self.reminder.id)
         self.assertEqual(response.data.get('task', None), self.reminder.task.id)
-        self.assertEqual(response.data.get('date', None), self.reminder.date)
+        self.assertEqual(
+            response.data.get('date', None),
+            self.reminder.date.strftime('%Y-%m-%dT%H:%M:%SZ')
+        )
 
     def test_update_reminder(self):
         dummy_data = {
