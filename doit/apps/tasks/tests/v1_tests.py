@@ -57,6 +57,12 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
             self.reminder.date.strftime('%Y-%m-%dT%H:%M:%SZ')
         )
 
+    def test_delete_reminder(self):
+        url = reverse('v1:reminders-detail', kwargs={'pk': self.reminder.id})
+
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
 
 class TaskAPIV1TestCase(TaskAPITestCase):
 
