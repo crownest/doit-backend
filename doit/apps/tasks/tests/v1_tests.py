@@ -39,6 +39,21 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
         self.assertEqual(response.data.get('task', None), self.reminder.task.id)
         self.assertEqual(response.data.get('date', None), self.reminder.date)
 
+    def test_update_reminder(self):
+        dummy_data = {
+            'date': '2017-12-19T15:00:00Z'
+        }
+        url = reverse('v1:reminders-detail', kwargs={'pk': self.reminder.id})
+
+        response = self.client.put(url, dummy_data, format='json')
+        self.reminder.refresh_from_db()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, dummy_data)
+        self.assertEqual(
+            response.data.get('date', None),
+            self.reminder.date.strftime('%Y-%m-%dT%H:%M:%SZ')
+        )
+
 
 class TaskAPIV1TestCase(TaskAPITestCase):
 
