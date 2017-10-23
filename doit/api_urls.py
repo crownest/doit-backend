@@ -6,12 +6,14 @@ from rest_framework import routers
 
 # Local Django
 from users.api_views import UserViewSetV1
+from core.api_views import ContactViewSetV1
 from tasks.api_views import TaskViewSetV1, ReminderViewSetV1
 
 
 router_V1 = routers.DefaultRouter()
 
 LIST_V1 = [
+    (r'contacts', ContactViewSetV1, 'contacts'),
     (r'users', UserViewSetV1, 'users'),
     (r'tasks', TaskViewSetV1, 'tasks'),
     (r'reminders', ReminderViewSetV1, 'reminders')

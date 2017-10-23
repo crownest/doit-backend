@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'djoser',
 
     # Internal Applications
+    'core',
     'tasks',
     'users'
 ]
