@@ -81,6 +81,22 @@ class UserAPIV1TestCase(UserAPITestCase):
         self.assertEqual(response.data.get('first_name', None), self.user.first_name)
         self.assertEqual(response.data.get('last_name', None), self.user.last_name)
 
+    def test_change_password_user(self):
+        dummy_data = {
+            'old_password': 'test',
+            'new_password': '123456',
+            'confirm_new_password': '123456'
+        }
+        url = reverse('v1:users-change-password', kwargs={'pk': self.user.id})
+        self.api_authentication()
+
+        response = self.client.post(url, dummy_data, format='json')
+        self.user.refresh_from_db()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertTrue(
+            self.user.check_password(dummy_data.get('new_password', None))
+        )
+
     def test_forgot_password_user(self):
         dummy_data = {
             'email': self.user.email
