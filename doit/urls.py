@@ -4,7 +4,7 @@ from django.conf.urls import url, include
 from users import views
 
 # Local Django
-from doit.api_views import LoginView
+from core.api_views import LoginView
 from doit.views import DocumentationView, ActivationView
 
 

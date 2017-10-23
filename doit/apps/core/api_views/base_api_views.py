@@ -1,11 +1,18 @@
 # Third-Party
 from rest_framework import viewsets, mixins
+from djoser.views import LoginView as _LoginView
 
 # Local Django
 from users.models import User
 from core.models import Contact
 from doit.modules import MailModule
-from core.serializers import ContactSerializer, ContactCreateSerializer
+from core.serializers import (
+    LoginSerializer, ContactSerializer, ContactCreateSerializer
+)
+
+
+class LoginView(_LoginView):
+    serializer_class = LoginSerializer
 
 
 class ContactViewSet(mixins.CreateModelMixin,
