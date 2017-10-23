@@ -21,14 +21,7 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
 
         response = self.client.post(url, self.dummy_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(
-            response.data.get('task', None),
-            self.dummy_data.get('task', None)
-        )
-        self.assertEqual(
-            response.data.get('date', None),
-            self.dummy_data.get('date', None)
-        )
+        self.assertEqual(response.data, self.dummy_data)
 
     def test_retrieve_reminder(self):
         url = reverse('v1:reminders-detail', kwargs={'pk': self.reminder.id})
