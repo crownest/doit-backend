@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.utils.crypto import get_random_string
 from django.template.loader import render_to_string
+from django.utils.translation import ugettext_lazy as _
 
 # Local Django
 from users.models import ActivationKey
@@ -49,8 +50,8 @@ class MailModule(object):
             )
         }
         context = {
-            'subject': 'Activate Your Account',
-            'message': (
+            'subject': _('Activate Your Account'),
+            'message': _(
                 "Doit\n"
                 "Hello, {full_name}\n"
                 "Activate Your Account = {activation_url}\n").format(
@@ -65,3 +66,30 @@ class MailModule(object):
         }
 
         send_mail_task.delay(context, 'activation')
+
+    @staticmethod
+    def send_contact_mail(contact, user):
+        template_context = {
+            'domain': settings.DOMAIN,
+            'full_name': user.get_full_name(),
+            'contact_url': settings.DOMAIN + reverse(
+                'admin:core_contact_change', args=[contact.id]
+            )
+        }
+        context = {
+            'subject': _('New Contact'),
+            'message': _(
+                "Doit\n"
+                "Hello, {full_name}\n"
+                "New Contact = {contact_url}\n").format(
+                    full_name=template_context.get('full_name', ''),
+                    contact_url=template_context.get('contact_url', '')
+                ),
+            'html_message': render_to_string(
+                'mail/contact-mail.html', template_context
+            ),
+            'from_email': settings.DEFAULT_FROM_EMAIL,
+            'recipient_list': [user.email]
+        }
+
+        send_mail_task.delay(context, 'contact')

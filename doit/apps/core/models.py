@@ -23,7 +23,7 @@ class Contact(DateModel):
 
     class Meta:
         verbose_name = _('Contact')
-        verbose_name_plural = ('Contact')
+        verbose_name_plural = ('Contacts')
 
     def __str__(self):
         return self.get_full_name()
