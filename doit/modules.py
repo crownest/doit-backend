@@ -10,8 +10,8 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
 # Local Django
-from users.models import ActivationKey
 from doit.tasks import send_mail_task
+from users.models import ActivationKey, ResetPasswordKey
 
 
 class ActivationKeyModule(object):
@@ -36,6 +36,30 @@ class ActivationKeyModule(object):
             activation_key = None
 
         return activation_key
+
+
+class ResetPasswordKeyModule(object):
+
+    @staticmethod
+    def create_key(user, length=50):
+        created = False
+
+        while created == False:
+            key = get_random_string(length=length)
+            reset_password_key, created = ResetPasswordKey.objects.get_or_create(
+                user=user, key=key
+            )
+
+        return reset_password_key
+
+    @staticmethod
+    def get_key(key):
+        try:
+            reset_password_key = ResetPasswordKey.objects.get(key=key, is_used=False)
+        except ResetPasswordKey.DoesNotExist:
+            reset_password_key = None
+
+        return reset_password_key
 
 
 class MailModule(object):
@@ -66,6 +90,33 @@ class MailModule(object):
         }
 
         send_mail_task.delay(context, 'activation')
+
+    @staticmethod
+    def send_forgot_password_mail(reset_password_key):
+        template_context = {
+            'domain': settings.DOMAIN,
+            'full_name': reset_password_key.user.get_full_name(),
+            'reset_password_url': settings.DOMAIN + reverse(
+                'reset-password', args=[reset_password_key.key]
+            )
+        }
+        context = {
+            'subject': _('Forgot Password'),
+            'message': _(
+                "Doit\n"
+                "Hello, {full_name}\n"
+                "Set New Password = {reset_password_url}\n").format(
+                    full_name=template_context.get('full_name', ''),
+                    reset_password_url=template_context.get('reset_password_url', '')
+                ),
+            'html_message': render_to_string(
+                'mail/forgot-password-mail.html', template_context
+            ),
+            'from_email': settings.DEFAULT_FROM_EMAIL,
+            'recipient_list': [reset_password_key.user.email]
+        }
+
+        send_mail_task.delay(context, 'forgot-password')
 
     @staticmethod
     def send_contact_mail(contact, user):

@@ -5,10 +5,13 @@ from django.views.static import serve
 from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from django.utils.translation import ugettext_lazy as _
 
 # Local Django
 from users.models import ActivationKey
-from doit.modules import ActivationKeyModule
+from doit.forms import ResetPasswordForm
+from doit.variables import RESET_PASSWORD_FORM_PREFIX
+from doit.modules import ActivationKeyModule, ResetPasswordKeyModule
 
 
 class DocumentationView(View):
@@ -59,6 +62,73 @@ class ActivationView(TemplateView):
             self.activation_key.is_used = True
             self.activation_key.save()
 
-            self.activation_message = 'Activation is successfully completed.'
+            self.activation_message = _('Activation is successfully completed.')
         else:
-            self.activation_message = 'Incorrect key!'
+            self.activation_message = _('Incorrect key!')
+
+
+class ResetPasswordView(TemplateView):
+    template_name = 'reset-password.html'
+
+    def dispatch(self, request, key, *args, **kwargs):
+        self.reset_password_message = ''
+        self.reset_password_key = None
+        self.reset_password_error = False
+        self.reset_password_success = False
+        self.check_key(key)
+
+        if not self.reset_password_key:
+            self.reset_password_error = True
+
+        return super(ResetPasswordView, self).dispatch(request, key, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ResetPasswordView, self).get_context_data(**kwargs)
+
+        context.update({
+            'title': _('Reset Password'),
+            'domain': settings.DOMAIN,
+            'reset_password_key': self.reset_password_key,
+            'reset_password_error': self.reset_password_error,
+            'reset_password_success': self.reset_password_success,
+            'reset_password_message': self.reset_password_message,
+            'reset_password_form': ResetPasswordForm(
+                prefix=RESET_PASSWORD_FORM_PREFIX
+            )
+        })
+
+        return context
+
+    def post(self, request, *args, **kwargs):
+        context = self.get_context_data()
+
+        if RESET_PASSWORD_FORM_PREFIX in request.POST:
+            reset_password_form = ResetPasswordForm(
+                self.request.POST, prefix=RESET_PASSWORD_FORM_PREFIX
+            )
+
+            if reset_password_form.is_valid():
+                user = reset_password_form.save(self.reset_password_key)
+
+                if not user:
+                    self.reset_password_error = True
+                else:
+                    self.reset_password_success = True
+                    self.reset_password_message = _(
+                        _('Your password has been successfully determined.')
+                    )
+
+            context.update({
+                'reset_password_form': reset_password_form,
+                'reset_password_error': self.reset_password_error,
+                'reset_password_success': self.reset_password_success,
+                'reset_password_message': self.reset_password_message
+            })
+
+        return super(ResetPasswordView, self).render_to_response(context)
+
+    def check_key(self, key):
+        self.reset_password_key = ResetPasswordKeyModule.get_key(key)
+
+        if not self.reset_password_key:
+            self.reset_password_message = _('Incorrect or used key!')

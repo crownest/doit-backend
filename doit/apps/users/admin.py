@@ -4,7 +4,7 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.admin import UserAdmin as _UserAdmin
 
 # Local
-from users.models import User, ActivationKey
+from users.models import User, ActivationKey, ResetPasswordKey
 
 
 @admin.register(User)
@@ -49,6 +49,16 @@ class UserAdmin(_UserAdmin):
 
 @admin.register(ActivationKey)
 class ActivationKeyAdmin(admin.ModelAdmin):
+    fields = ('key', 'user', 'is_used')
+    readonly_fields = ('key', 'user', 'is_used')
+
+    list_display = ('user', 'key', 'is_used')
+    list_filter = ('is_used',)
+    search_fields = ('user__email', 'user__first_name', 'user__last_name')
+
+
+@admin.register(ResetPasswordKey)
+class ResetPasswordKeyAdmin(admin.ModelAdmin):
     fields = ('key', 'user', 'is_used')
     readonly_fields = ('key', 'user', 'is_used')
 

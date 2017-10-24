@@ -77,3 +77,19 @@ class UserPasswordChangeSerializer(serializers.Serializer):
             )
 
         return value
+
+
+class UserPasswordForgotSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    class Meta:
+        fields = ('email',)
+
+    def validate_email(self, value):
+        self.user = None
+        try:
+            self.user = User.objects.get(email=value)
+        except User.DoesNotExist:
+            raise serializers.ValidationError('Email not found!')
+
+        return value

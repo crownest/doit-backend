@@ -1,7 +1,8 @@
 # Local Django
 from .base_serializers import (
     UserListSerializer, UserCreateSerializer,
-    UserRetrieveSerializer, UserUpdateSerializer, UserPasswordChangeSerializer
+    UserRetrieveSerializer, UserUpdateSerializer,
+    UserPasswordChangeSerializer, UserPasswordForgotSerializer
 )
 
 
@@ -23,3 +24,7 @@ class UserUpdateSerializerV1(UserUpdateSerializer):
 
 class UserPasswordChangeSerializerV1(UserPasswordChangeSerializer):
     pass
+
+
+class UserPasswordForgotSerializerV1(UserPasswordForgotSerializer):
+	pass

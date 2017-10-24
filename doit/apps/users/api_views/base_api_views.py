@@ -1,19 +1,18 @@
 # Third-Party
 from rest_framework.response import Response
-from rest_framework.decorators import detail_route
 from rest_framework import viewsets, mixins, status
+from rest_framework.decorators import detail_route, list_route
 
 # Django
 from django.core.mail import send_mail
 
 # Local Django
 from users.models import User, ActivationKey
-from doit.modules import ActivationKeyModule, MailModule
+from doit.modules import ActivationKeyModule, ResetPasswordKeyModule, MailModule
 from users.serializers import (
     UserSerializer, UserListSerializer, UserCreateSerializer,
-    UserRetrieveSerializer, UserUpdateSerializer, UserPasswordChangeSerializer,
-    UserListSerializerV1, UserCreateSerializerV1,
-    UserRetrieveSerializerV1, UserUpdateSerializerV1, UserPasswordChangeSerializerV1
+    UserRetrieveSerializer, UserUpdateSerializer,
+    UserPasswordChangeSerializer, UserPasswordForgotSerializer
 )
 
 
@@ -42,13 +41,15 @@ class UserViewSet(mixins.ListModelMixin,
     def get_route_serializer_class(self):
         if self.action == 'change_password':
             return UserPasswordChangeSerializer
+        elif self.action == 'forgot_password':
+            return UserPasswordForgotSerializer
         else:
             return UserSerializer
 
     def get_permissions(self):
         permissions = super(UserViewSet, self).get_permissions()
 
-        if self.action == 'create':
+        if self.action == 'create' or self.action == 'forgot_password':
             return []
 
         return permissions
@@ -79,6 +80,25 @@ class UserViewSet(mixins.ListModelMixin,
         if serializer.is_valid():
             user.set_password(serializer.data['new_password'])
             user.save()
+
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @list_route(methods=['post'], url_path='password/forgot',
+                url_name='forgot-password')
+    def forgot_password(self, request):
+        serializer_class = self.get_route_serializer_class()
+        serializer = serializer_class(data=request.data)
+
+        if serializer.is_valid():
+            user = serializer.user
+
+            # Create Forgot Password Key
+            reset_password_key = ResetPasswordKeyModule.create_key(user=user)
+
+            # Send Forgot Password Mail
+            MailModule.send_forgot_password_mail(reset_password_key)
 
             return Response(status=status.HTTP_200_OK)
         else:

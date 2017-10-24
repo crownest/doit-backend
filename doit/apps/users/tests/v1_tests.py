@@ -80,3 +80,12 @@ class UserAPIV1TestCase(UserAPITestCase):
         self.assertEqual(response.data.get('email', None), self.user.email)
         self.assertEqual(response.data.get('first_name', None), self.user.first_name)
         self.assertEqual(response.data.get('last_name', None), self.user.last_name)
+
+    def test_forgot_password_user(self):
+        dummy_data = {
+            'email': self.user.email
+        }
+        url = reverse('v1:users-forgot-password')
+
+        response = self.client.post(url, dummy_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

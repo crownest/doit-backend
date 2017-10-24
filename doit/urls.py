@@ -5,7 +5,7 @@ from users import views
 
 # Local Django
 from core.api_views import LoginView
-from doit.views import DocumentationView, ActivationView
+from doit.views import DocumentationView, ActivationView, ResetPasswordView
 
 
 urlpatterns = [
@@ -25,4 +25,5 @@ urlpatterns = [
 
     # Activation
     url(r'^activation/(?P<key>\w+)/$', ActivationView.as_view(), name='activation'),
+    url(r'^reset-password/(?P<key>\w+)/$', ResetPasswordView.as_view(), name='reset-password')
 ]
