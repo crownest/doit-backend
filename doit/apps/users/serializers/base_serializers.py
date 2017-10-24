@@ -1,5 +1,6 @@
 # Third-Party
 from rest_framework import serializers
+from django.utils.translation import ugettext_lazy as _
 
 # Local Django
 from users.models import User
@@ -30,9 +31,7 @@ class UserCreateSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = (
-            'email', 'first_name', 'last_name', 'password'
-        )
+        fields = ('email', 'first_name', 'last_name', 'password')
         extra_kwargs = {'password': {'write_only': True}}
 
 
@@ -40,9 +39,7 @@ class UserUpdateSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = (
-            'email', 'first_name', 'last_name'
-        )
+        fields = ('email', 'first_name', 'last_name')
 
 
 class UserPasswordChangeSerializer(serializers.Serializer):
@@ -51,9 +48,7 @@ class UserPasswordChangeSerializer(serializers.Serializer):
     confirm_new_password = serializers.CharField()
 
     class Meta:
-        fields = (
-            'old_password', 'new_password', 'confirm_new_password'
-        )
+        fields = ('old_password', 'new_password', 'confirm_new_password')
 
     def validate_confirm_new_password(self, value):
         if self.initial_data['new_password'] != self.initial_data['confirm_new_password']:
@@ -71,10 +66,10 @@ class UserPasswordChangeSerializer(serializers.Serializer):
         user = self.context['user']
 
         if not user.check_password(value):
-            raise serializers.ValidationError(
+            raise serializers.ValidationError(_(
                 'Your old password was entered incorrectly. '
                 'Please enter it again.'
-            )
+            ))
 
         return value
 
@@ -90,6 +85,25 @@ class UserPasswordForgotSerializer(serializers.Serializer):
         try:
             self.user = User.objects.get(email=value)
         except User.DoesNotExist:
-            raise serializers.ValidationError('Email not found!')
+            raise serializers.ValidationError(_('User not found!'))
+
+        return value
+
+
+class UserActivationResendSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    class Meta:
+        fields = ('email',)
+
+    def validate_email(self, value):
+        self.user = None
+        try:
+            self.user = User.objects.get(email=value)
+
+            if self.user.is_verified:
+                raise serializers.ValidationError(_('User already verifed!'))
+        except User.DoesNotExist:
+            raise serializers.ValidationError(_('User not found!'))
 
         return value

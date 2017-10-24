@@ -105,3 +105,12 @@ class UserAPIV1TestCase(UserAPITestCase):
 
         response = self.client.post(url, dummy_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_resend_activation_user(self):
+        dummy_data = {
+            'email': self.user.email
+        }
+        url = reverse('v1:users-resend-activation')
+
+        response = self.client.post(url, dummy_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

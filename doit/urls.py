@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^auth/login', LoginView.as_view(), name='login'),
     url(r'^auth/', include('djoser.urls.authtoken')),
 
-    # Activation
+    # Activation and Password Operations
     url(r'^activation/(?P<key>\w+)/$', ActivationView.as_view(), name='activation'),
     url(r'^reset-password/(?P<key>\w+)/$', ResetPasswordView.as_view(), name='reset-password')
 ]

@@ -2,7 +2,8 @@
 from .base_serializers import (
     UserListSerializer, UserCreateSerializer,
     UserRetrieveSerializer, UserUpdateSerializer,
-    UserPasswordChangeSerializer, UserPasswordForgotSerializer
+    UserPasswordChangeSerializer, UserPasswordForgotSerializer,
+    UserActivationResendSerializer
 )
 
 
@@ -27,4 +28,7 @@ class UserPasswordChangeSerializerV1(UserPasswordChangeSerializer):
 
 
 class UserPasswordForgotSerializerV1(UserPasswordForgotSerializer):
-	pass
+    pass
+
+class UserActivationResendSerializerV1(UserActivationResendSerializer):
+    pass

@@ -12,7 +12,8 @@ from doit.modules import ActivationKeyModule, ResetPasswordKeyModule, MailModule
 from users.serializers import (
     UserSerializer, UserListSerializer, UserCreateSerializer,
     UserRetrieveSerializer, UserUpdateSerializer,
-    UserPasswordChangeSerializer, UserPasswordForgotSerializer
+    UserPasswordChangeSerializer, UserPasswordForgotSerializer,
+    UserActivationResendSerializer
 )
 
 
@@ -43,13 +44,15 @@ class UserViewSet(mixins.ListModelMixin,
             return UserPasswordChangeSerializer
         elif self.action == 'forgot_password':
             return UserPasswordForgotSerializer
+        elif self.action == 'resend_activation':
+            return UserActivationResendSerializer
         else:
             return UserSerializer
 
     def get_permissions(self):
         permissions = super(UserViewSet, self).get_permissions()
 
-        if self.action == 'create' or self.action == 'forgot_password':
+        if self.action in ['create', 'forgot_password', 'resend_activation']:
             return []
 
         return permissions
@@ -92,13 +95,28 @@ class UserViewSet(mixins.ListModelMixin,
         serializer = serializer_class(data=request.data)
 
         if serializer.is_valid():
-            user = serializer.user
-
             # Create Forgot Password Key
-            reset_password_key = ResetPasswordKeyModule.create_key(user=user)
+            reset_password_key = ResetPasswordKeyModule.create_key(user=serializer.user)
 
             # Send Forgot Password Mail
             MailModule.send_forgot_password_mail(reset_password_key)
+
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @list_route(methods=['post'], url_path='activation/resend',
+                url_name='resend-activation')
+    def resend_activation(self, request):
+        serializer_class = self.get_route_serializer_class()
+        serializer = serializer_class(data=request.data)
+
+        if serializer.is_valid():
+            # Create Activation Key
+            activation_key = ActivationKeyModule.create_key(user=serializer.user)
+
+            # Send Activation Mail
+            MailModule.send_activation_mail(activation_key)
 
             return Response(status=status.HTTP_200_OK)
         else:
