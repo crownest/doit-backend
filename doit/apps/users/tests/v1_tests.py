@@ -84,8 +84,8 @@ class UserAPIV1TestCase(UserAPITestCase):
     def test_change_password_user(self):
         dummy_data = {
             'old_password': 'test',
-            'new_password': '123456',
-            'confirm_new_password': '123456'
+            'new_password': '123456doit',
+            'confirm_new_password': '123456doit'
         }
         url = reverse('v1:users-change-password', kwargs={'pk': self.user.id})
         self.api_authentication()
