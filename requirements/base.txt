@@ -2,6 +2,12 @@
 Django==1.11.3
 
 
+# Image
+easy-thumbnails==2.4.2
+Pillow==4.3.0
+# olefile==0.44
+
+
 # Django Rest Framework
 djangorestframework==3.6.3
 djoser==0.6.0
@@ -14,6 +20,7 @@ celery==4.1.0
 # kombu==4.1.0
 # pytz==2017.2
 # vine==1.1.4
+
 
 # Documentation
 mkdocs==0.16.3

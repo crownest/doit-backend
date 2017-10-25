@@ -11,7 +11,7 @@ from users.models import User, ActivationKey
 from doit.modules import ActivationKeyModule, ResetPasswordKeyModule, MailModule
 from users.serializers import (
     UserSerializer, UserListSerializer, UserCreateSerializer,
-    UserRetrieveSerializer, UserUpdateSerializer,
+    UserRetrieveSerializer, UserUpdateSerializer, UserImageUpdateSerializer,
     UserPasswordChangeSerializer, UserPasswordForgotSerializer,
     UserActivationResendSerializer
 )
@@ -40,7 +40,9 @@ class UserViewSet(mixins.ListModelMixin,
             return UserSerializer
 
     def get_route_serializer_class(self):
-        if self.action == 'change_password':
+        if self.action == 'update_image':
+            return UserImageUpdateSerializer
+        elif self.action == 'change_password':
             return UserPasswordChangeSerializer
         elif self.action == 'forgot_password':
             return UserPasswordForgotSerializer
@@ -71,6 +73,37 @@ class UserViewSet(mixins.ListModelMixin,
 
         return user
 
+    @detail_route(methods=['post'], url_path='image/update',
+                  url_name='update-image')
+    def update_image(self, request, pk=None):
+        user = self.get_object()
+        serializer_class = self.get_route_serializer_class()
+        serializer = serializer_class(data=request.data)
+
+        if serializer.is_valid():
+            user.image = serializer.validated_data['image']
+            user.save()
+
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @detail_route(methods=['delete'], url_path='image/delete',
+                  url_name='delete-image')
+    def delete_image(self, request, pk=None):
+        user = self.get_object()
+
+        try:
+            user.image = None
+            user.save()
+
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except:
+            return Response(
+                {'detail': _('Image can not be deleted')},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
     @detail_route(methods=['post'], url_path='password/change',
                   url_name='change-password')
     def change_password(self, request, pk=None):
@@ -81,7 +114,7 @@ class UserViewSet(mixins.ListModelMixin,
         )
 
         if serializer.is_valid():
-            user.set_password(serializer.data['new_password'])
+            user.set_password(serializer.validated_data['new_password'])
             user.save()
 
             return Response(status=status.HTTP_200_OK)

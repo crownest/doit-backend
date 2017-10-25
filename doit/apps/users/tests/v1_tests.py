@@ -1,4 +1,8 @@
+# Standart Library
+import io
+
 # Third-Party
+from PIL import Image
 from rest_framework import status
 
 # Django
@@ -80,6 +84,30 @@ class UserAPIV1TestCase(UserAPITestCase):
         self.assertEqual(response.data.get('email', None), self.user.email)
         self.assertEqual(response.data.get('first_name', None), self.user.first_name)
         self.assertEqual(response.data.get('last_name', None), self.user.last_name)
+
+    def test_image_update_user(self):
+        # Create image
+        file = io.BytesIO()
+        image = Image.new('RGBA', size=(100, 100), color=(155, 0, 0))
+        image.save(file, 'png')
+        file.name = 'test.png'
+        file.seek(0)
+
+        dummy_data = {
+            'image': file
+        }
+        url = reverse('v1:users-update-image', kwargs={'pk': self.user.id})
+        self.api_authentication()
+
+        response = self.client.post(url, dummy_data, format='multipart')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_delete_reminder(self):
+        url = reverse('v1:users-delete-image', kwargs={'pk': self.user.id})
+        self.api_authentication()
+
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_change_password_user(self):
         dummy_data = {

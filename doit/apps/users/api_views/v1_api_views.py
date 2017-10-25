@@ -2,7 +2,7 @@
 from .base_api_views import UserViewSet
 from users.serializers import (
     UserSerializer, UserListSerializerV1, UserCreateSerializerV1,
-    UserRetrieveSerializerV1, UserUpdateSerializerV1,
+    UserRetrieveSerializerV1, UserUpdateSerializerV1, UserImageUpdateSerializerV1,
     UserPasswordChangeSerializerV1, UserPasswordForgotSerializerV1,
     UserActivationResendSerializerV1
 )
@@ -23,6 +23,8 @@ class UserViewSetV1(UserViewSet):
             return UserSerializer
 
     def get_route_serializer_class(self):
+        if self.action == 'update_image':
+            return UserImageUpdateSerializerV1
         if self.action == 'change_password':
             return UserPasswordChangeSerializerV1
         elif self.action == 'forgot_password':

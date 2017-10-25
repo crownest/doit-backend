@@ -14,7 +14,7 @@ class UserAdmin(_UserAdmin):
             'fields': ('email', 'password')
         }),
         (_('Personal info'), {
-            'fields': ('first_name', 'last_name')
+            'fields': ('first_name', 'last_name', ('image', 'image_prev'))
         }),
         (_('Permissions'), {
             'fields': (
@@ -26,7 +26,7 @@ class UserAdmin(_UserAdmin):
             'fields': ('last_login',)
         }),
     )
-    readonly_fields = ('last_login',)
+    readonly_fields = ('last_login', 'image_prev')
 
     add_fieldsets = (
        (None, {
@@ -40,7 +40,7 @@ class UserAdmin(_UserAdmin):
 
     list_display = (
         'first_name', 'last_name', 'email',
-        'is_active', 'is_verified', 'is_superuser'
+        'is_active', 'is_verified', 'is_superuser', 'image_prev'
     )
     list_filter = ('is_active', 'is_verified', 'is_superuser')
     search_fields = ('email', 'first_name', 'last_name')

@@ -14,6 +14,8 @@
 				"bfff54ea-606e-6728-d219-fa176d63673d",
 				"a835b954-7cc5-7a14-1485-381b486214e7",
 				"b3f70ee9-0a50-8d9a-f5c6-b5340856f8d3",
+				"fe9bcaa9-10b7-04c1-8b89-ed3f37a08c8c",
+				"1211abe9-7c79-1387-5d6b-d4f91c766ced",
 				"ef25e1df-5620-f6c2-8c85-7f4d33643fca",
 				"ce64097c-150e-09e5-b149-d72204a0c5ea",
 				"0129409d-569f-02dc-2c86-ed06f63b1b93",
@@ -44,6 +46,8 @@
 				"6e9d9020-7576-1a8e-4e47-9da11acf83ee",
 				"8bbbdaab-c397-5c8d-a7b9-16397f7caf41",
 				"04feb893-42cd-1c09-2862-bb3bf7c432be",
+				"9a160ea6-cb15-b570-cda4-87310c8360a0",
+				"65cba030-d1b7-e1f3-4fce-b10882f76c32",
 				"a9c36ed1-c2e7-03d0-464b-6248377eaafc",
 				"695b1189-ef22-12a4-7c52-3c81fb544c9f",
 				"b07775bb-534d-2e80-1cb1-7f16f6830be4",
@@ -114,7 +118,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1508884184679,
+			"time": 1509012466478,
 			"name": "User Activation Resend",
 			"description": "",
 			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
@@ -164,6 +168,49 @@
 			"responses": [],
 			"rawModeData": "{\n    \"email\": \"doit@unicrow.com\",\n    \"first_name\": \"Doit\",\n    \"last_name\": \"Apps\"\n}\n",
 			"collection_id": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0"
+		},
+		{
+			"id": "1211abe9-7c79-1387-5d6b-d4f91c766ced",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/users/1/image/delete/",
+			"folder": "67464ad2-1d7f-182f-3484-e9bc14c327e1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509006264212,
+			"name": "User Image Delete",
+			"description": "",
+			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
+			"responses": [],
+			"rawModeData": ""
 		},
 		{
 			"id": "154ba51b-129f-e31f-6333-c96a4759c8c1",
@@ -512,6 +559,49 @@
 			"collection_id": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0"
 		},
 		{
+			"id": "65cba030-d1b7-e1f3-4fce-b10882f76c32",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/users/1/image/delete/",
+			"folder": "71fc37f9-72a7-6209-2030-316a11ad52e0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509012659356,
+			"name": "User Image Delete",
+			"description": "",
+			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
 			"id": "695b1189-ef22-12a4-7c52-3c81fb544c9f",
 			"headers": "Accept: application/json\nContent-Type: application/json\n",
 			"headerData": [
@@ -856,6 +946,50 @@
 			"collection_id": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0"
 		},
 		{
+			"id": "9a160ea6-cb15-b570-cda4-87310c8360a0",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://api.doit.unicrow.com/v1/users/1/image/update/",
+			"folder": "67464ad2-1d7f-182f-3484-e9bc14c327e1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "image",
+					"value": "logo.png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509012646596,
+			"name": "User Image Update",
+			"description": "",
+			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
+			"responses": []
+		},
+		{
 			"id": "a1b8aece-0e0a-3e84-12ef-ce51ce601e27",
 			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\nContent-Type: application/json\n",
 			"headerData": [
@@ -1052,13 +1186,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1508166683567,
+			"time": 1508931983843,
 			"name": "User Update",
 			"description": "",
 			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
 			"responses": [],
-			"rawModeData": "{\n    \"email\": \"doit@unicrow.com\",\n    \"first_name\": \"Doit\",\n    \"last_name\": \"Apps\"\n}\n",
-			"collection_id": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0"
+			"rawModeData": "{\n    \"email\": \"doit@unicrow.com\",\n    \"first_name\": \"Doit\",\n    \"last_name\": \"Apps\"\n}\n"
 		},
 		{
 			"id": "b5b37ce8-653a-07cf-ab23-2de089c52355",
@@ -1322,13 +1455,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1508859670056,
+			"time": 1509012463104,
 			"name": "User Password Forgot",
 			"description": "",
 			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
 			"responses": [],
-			"rawModeData": "{\n    \"email\": \"doit@unicrow.com\"\n}\n",
-			"collection_id": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0"
+			"rawModeData": "{\n    \"email\": \"doit@unicrow.com\"\n}\n"
 		},
 		{
 			"id": "d36bd488-8201-df43-9ccc-d1fee1255e51",
@@ -1489,13 +1621,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1508166681329,
+			"time": 1509012458072,
 			"name": "User Password Change",
 			"description": "",
 			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
 			"responses": [],
-			"rawModeData": "{\n    \"old_password\": \"doitapps\",\n    \"new_password\": \"appsdoit\",\n    \"confirm_new_password\": \"appsdoit\"\n}\n",
-			"collection_id": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0"
+			"rawModeData": "{\n    \"old_password\": \"doitapps\",\n    \"new_password\": \"appsdoit\",\n    \"confirm_new_password\": \"appsdoit\"\n}\n"
 		},
 		{
 			"id": "f25fc538-8930-73cb-6d2c-fbab912b43aa",
@@ -1578,6 +1709,50 @@
 			"rawModeData": "{\n\t\"task\": 1,\n    \"date\": \"2017-10-18T16:00:00Z\"\n}\n",
 			"collection_id": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
 			"timestamp": null
+		},
+		{
+			"id": "fe9bcaa9-10b7-04c1-8b89-ed3f37a08c8c",
+			"headers": "Authorization: TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "TOKEN 01d9ba67daf01e82d77884ae5407bbc7b7fc3854",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8000/v1/users/1/image/update/",
+			"folder": "67464ad2-1d7f-182f-3484-e9bc14c327e1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "image",
+					"value": "logo.png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509012842883,
+			"name": "User Image Update",
+			"description": "",
+			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
+			"responses": []
 		}
 	]
 }

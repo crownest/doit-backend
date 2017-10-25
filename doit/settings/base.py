@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'easy_thumbnails',
 
     # Internal Applications
     'core',
@@ -106,6 +107,12 @@ STATIC_ROOT = os.path.join(PACKAGE_ROOT, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+# Easy Thumbnails
+
+THUMBNAIL_MEDIA_URL = "/media/thumbnail/"
+THUMBNAIL_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'thumbnail/')
 
 
 from .app_settings import *

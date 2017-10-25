@@ -1,6 +1,10 @@
 # Third-Party
 from rest_framework import serializers
+from easy_thumbnails.files import get_thumbnailer
 from django.utils.translation import ugettext_lazy as _
+
+# Django
+from django.conf import settings
 
 # Local Django
 from users.models import User
@@ -8,12 +12,21 @@ from django.contrib.auth import password_validation
 
 
 class UserSerializer(serializers.ModelSerializer):
+    image_200x200 = serializers.SerializerMethodField()
 
     class Meta:
         model = User
         fields = (
-            'id', 'email', 'first_name', 'last_name', 'is_active', 'is_verified'
+            'id', 'email', 'first_name', 'last_name',
+            'image', 'image_200x200', 'is_active', 'is_verified'
         )
+
+    def get_image_200x200(self, obj):
+        try:
+            context = {'size': (200, 200)}
+            return settings.DOMAIN + get_thumbnailer(obj.image).get_thumbnail(context).url
+        except:
+            return None
 
 
 class UserListSerializer(UserSerializer):
@@ -40,6 +53,14 @@ class UserUpdateSerializer(UserSerializer):
     class Meta:
         model = User
         fields = ('email', 'first_name', 'last_name')
+
+
+class UserImageUpdateSerializer(UserSerializer):
+
+    class Meta:
+        model = User
+        fields = ('image',)
+        extra_kwargs = {'image': {'required': True}}
 
 
 class UserPasswordChangeSerializer(serializers.Serializer):
