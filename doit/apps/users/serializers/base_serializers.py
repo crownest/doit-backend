@@ -12,22 +12,31 @@ from django.contrib.auth import password_validation
 
 
 class UserSerializer(serializers.ModelSerializer):
-    image_200x200 = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
+    image_128x128 = serializers.SerializerMethodField()
 
     class Meta:
         model = User
         fields = (
             'id', 'email', 'first_name', 'last_name',
-            'image', 'image_200x200', 'is_active', 'is_verified'
+            'image', 'image_128x128', 'is_active', 'is_verified'
         )
 
-    def get_image_200x200(self, obj):
-        try:
-            context = {'size': (200, 200)}
-            return settings.DOMAIN + get_thumbnailer(obj.image).get_thumbnail(context).url
-        except:
-            return None
+    def get_image(self, obj):
+        if obj.image:
+            return settings.DOMAIN + obj.image.url
+        else:
+            return settings.DOMAIN + '/static/img/users/default-user-image.256x256.png'
 
+    def get_image_128x128(self, obj):
+        if obj.image:
+            try:
+                context = {'size': (128, 128)}
+                return settings.DOMAIN + get_thumbnailer(obj.image).get_thumbnail(context).url
+            except:
+                return None
+        else:
+            return settings.DOMAIN + '/static/img/users/default-user-image.128x128.png'
 
 class UserListSerializer(UserSerializer):
 
@@ -56,6 +65,7 @@ class UserUpdateSerializer(UserSerializer):
 
 
 class UserImageUpdateSerializer(UserSerializer):
+    image = serializers.ImageField()
 
     class Meta:
         model = User
