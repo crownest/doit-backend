@@ -18,13 +18,18 @@ class ActivationKeyModule(object):
 
     @staticmethod
     def create_key(user, length=50):
-        created = False
+        activation_key, created = ActivationKey.objects.get_or_create(
+            user=user, is_used=False
+        )
 
-        while created == False:
-            key = get_random_string(length=length)
-            activation_key, created = ActivationKey.objects.get_or_create(
-                user=user, key=key
-            )
+        while not activation_key.key:
+            key = get_random_string(length=50)
+
+            try:
+                ActivationKey.objects.get(key=key)
+            except ActivationKey.DoesNotExist:
+                activation_key.key = key
+                activation_key.save()
 
         return activation_key
 
@@ -42,13 +47,18 @@ class ResetPasswordKeyModule(object):
 
     @staticmethod
     def create_key(user, length=50):
-        created = False
+        reset_password_key, created = ResetPasswordKey.objects.get_or_create(
+            user=user, is_used=False
+        )
 
-        while created == False:
-            key = get_random_string(length=length)
-            reset_password_key, created = ResetPasswordKey.objects.get_or_create(
-                user=user, key=key
-            )
+        while not reset_password_key.key:
+            key = get_random_string(length=50)
+
+            try:
+                ResetPasswordKey.objects.get(key=key)
+            except ResetPasswordKey.DoesNotExist:
+                reset_password_key.key = key
+                reset_password_key.save()
 
         return reset_password_key
 
