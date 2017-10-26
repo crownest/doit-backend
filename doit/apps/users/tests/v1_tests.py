@@ -85,7 +85,7 @@ class UserAPIV1TestCase(UserAPITestCase):
         self.assertEqual(response.data.get('first_name', None), self.user.first_name)
         self.assertEqual(response.data.get('last_name', None), self.user.last_name)
 
-    def test_image_update_user(self):
+    def test_update_image_user(self):
         # Create image
         file = io.BytesIO()
         image = Image.new('RGBA', size=(100, 100), color=(155, 0, 0))
@@ -102,7 +102,7 @@ class UserAPIV1TestCase(UserAPITestCase):
         response = self.client.post(url, dummy_data, format='multipart')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_delete_reminder(self):
+    def test_delete_image_user(self):
         url = reverse('v1:users-delete-image', kwargs={'pk': self.user.id})
         self.api_authentication()
 

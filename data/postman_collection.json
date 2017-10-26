@@ -806,7 +806,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://api.doit.unicrow.com0/v1/users/1/",
+			"url": "http://api.doit.unicrow.com/v1/users/1/",
 			"folder": "71fc37f9-72a7-6209-2030-316a11ad52e0",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -819,13 +819,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1508164978716,
+			"time": 1509017079667,
 			"name": "User Retrieve",
 			"description": "",
 			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
 			"responses": [],
-			"rawModeData": "\n{\n    \"email\": \"kenansubasiceng@gmail.com\",\n    \"first_name\": \"Kenan\",\n    \"last_name\": \"Subaşı\",\n    \"password\": \"25442544a\"\n}",
-			"collection_id": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0"
+			"rawModeData": "\n{\n    \"email\": \"kenansubasiceng@gmail.com\",\n    \"first_name\": \"Kenan\",\n    \"last_name\": \"Subaşı\",\n    \"password\": \"25442544a\"\n}"
 		},
 		{
 			"id": "8ee9cedc-cc06-a044-7be4-4bd1a2336325",
@@ -983,7 +982,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1509012646596,
+			"time": 1509016632935,
 			"name": "User Image Update",
 			"description": "",
 			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
@@ -1621,7 +1620,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1509012458072,
+			"time": 1509018047269,
 			"name": "User Password Change",
 			"description": "",
 			"collectionId": "09c29a8f-6a50-5b68-777b-cbf2aab7cee0",
