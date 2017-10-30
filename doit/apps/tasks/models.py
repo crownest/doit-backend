@@ -24,6 +24,9 @@ class Task(models.Model):
 
 class Reminder(models.Model):
     date = models.DateTimeField(verbose_name=_('Date'))
+    celery_task_id = models.CharField(
+        verbose_name=_('Celery Task Id'), max_length=254, null=True, blank=True
+    )
     task = models.ForeignKey(
         verbose_name=_('Task'), to='tasks.Task', related_name='reminders'
     )

@@ -1,5 +1,9 @@
 # Standard Library
 import random
+import datetime
+
+# Third-Party
+from celery.task.control import revoke
 
 # Django
 from django.conf import settings
@@ -154,3 +158,51 @@ class MailModule(object):
         }
 
         send_mail_task.delay(context, 'contact')
+
+
+class ReminderModule(object):
+
+    @staticmethod
+    def create_celery_task(reminder):
+        template_context = {
+            'domain': settings.DOMAIN,
+            'full_name': reminder.task.user.get_full_name(),
+            'task': reminder.task.title
+        }
+        context = {
+            'subject': _('Reminder'),
+            'message': _(
+                "Doit\n"
+                "Hello, {full_name}\n"
+                "It's time for the task.\n"
+                "'{task}'").format(
+                    full_name=template_context.get('full_name', ''),
+                    task=template_context.get('task', '')
+                ),
+            'html_message': render_to_string(
+                'mail/reminder-mail.html', template_context
+            ),
+            'from_email': settings.DEFAULT_FROM_EMAIL,
+            'recipient_list': [reminder.task.user.email]
+        }
+
+        result = send_mail_task.apply_async(
+            (context, 'reminder'),
+            eta=reminder.date - datetime.timedelta(minutes=1)
+        )
+        reminder.celery_task_id = result.task_id
+        reminder.save()
+
+    @staticmethod
+    def update_celery_task(reminder):
+        ReminderModule.destroy_celery_task(reminder)
+        ReminderModule.create_celery_task(reminder)
+
+    @staticmethod
+    def destroy_celery_task(reminder):
+        if reminder.celery_task_id:
+            revoke(reminder.celery_task_id)
+            reminder.celery_task_id = None
+            reminder.save()
+        else:
+            pass

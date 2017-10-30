@@ -1,5 +1,4 @@
 # Standart Library
-import pytz
 import datetime
 
 # Third-Party
@@ -30,7 +29,7 @@ class ReminderAPITestCase(APITestCase):
         )
 
         # Create Dummy Data
-        self.date = '2017-11-15T12:59:44Z'
+        self.date = '2017-11-15T12:59:44'
         self.dummy_data = {
             'task': self.task.id,
             'date': self.date
@@ -39,9 +38,7 @@ class ReminderAPITestCase(APITestCase):
         # Create Reminder
         self.reminder = Reminder.objects.create(
             task=self.task,
-            date=pytz.utc.localize(
-                datetime.datetime.strptime(self.date, '%Y-%m-%dT%H:%M:%SZ')
-            )
+            date=datetime.datetime.strptime(self.date, '%Y-%m-%dT%H:%M:%S')
         )
 
     def api_authentication(self):

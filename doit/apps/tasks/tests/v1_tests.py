@@ -32,12 +32,12 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
         self.assertEqual(response.data.get('task', None), self.reminder.task.id)
         self.assertEqual(
             response.data.get('date', None),
-            self.reminder.date.strftime('%Y-%m-%dT%H:%M:%SZ')
+            self.reminder.date.strftime('%Y-%m-%dT%H:%M:%S')
         )
 
     def test_update_reminder(self):
         dummy_data = {
-            'date': '2017-12-19T15:00:00Z'
+            'date': '2017-12-19T15:00:00'
         }
         url = reverse('v1:reminders-detail', kwargs={'pk': self.reminder.id})
 
@@ -47,7 +47,7 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
         self.assertEqual(response.data, dummy_data)
         self.assertEqual(
             response.data.get('date', None),
-            self.reminder.date.strftime('%Y-%m-%dT%H:%M:%SZ')
+            self.reminder.date.strftime('%Y-%m-%dT%H:%M:%S')
         )
 
     def test_delete_reminder(self):

@@ -2,6 +2,7 @@
 from rest_framework import viewsets, mixins
 
 # Local Django
+from doit.modules import ReminderModule
 from tasks.models import Task, Reminder
 from tasks.serializers import (
     ReminderSerializer, ReminderListSerializer, ReminderCreateSerializer,
@@ -34,6 +35,20 @@ class ReminderViewSet(mixins.ListModelMixin,
         else:
             return ReminderSerializer
 
+    def perform_create(self, serializer):
+        reminder = serializer.save()
+
+        ReminderModule.create_celery_task(reminder)
+
+    def perform_update(self, serializer):
+        reminder = serializer.save()
+
+        ReminderModule.update_celery_task(reminder)
+
+    def perform_destroy(self, instance):
+        ReminderModule.destroy_celery_task(instance)
+
+        super(ReminderViewSet, self).perform_destroy(instance)
 
 class TaskViewSet(mixins.ListModelMixin,
                   mixins.CreateModelMixin,
