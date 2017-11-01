@@ -29,16 +29,17 @@ class ReminderAPITestCase(APITestCase):
         )
 
         # Create Dummy Data
-        self.date = '2017-11-15T12:59:44'
+        self.date = datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
+        self.date_str = self.date.strftime('%Y-%m-%dT%H:%M:%S')
         self.dummy_data = {
             'task': self.task.id,
-            'date': self.date
+            'date': self.date_str
         }
 
         # Create Reminder
         self.reminder = Reminder.objects.create(
             task=self.task,
-            date=datetime.datetime.strptime(self.date, '%Y-%m-%dT%H:%M:%S')
+            date=datetime.datetime.strptime(self.date_str, '%Y-%m-%dT%H:%M:%S')
         )
 
     def api_authentication(self):

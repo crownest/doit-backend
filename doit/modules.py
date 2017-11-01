@@ -187,8 +187,7 @@ class ReminderModule(object):
         }
 
         result = send_mail_task.apply_async(
-            (context, 'reminder'),
-            eta=reminder.date - datetime.timedelta(minutes=1)
+            (context, 'reminder'), eta=reminder.date
         )
         reminder.celery_task_id = result.task_id
         reminder.save()

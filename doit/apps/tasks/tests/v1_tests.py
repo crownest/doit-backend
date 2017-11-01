@@ -1,3 +1,6 @@
+# Standart Library
+import datetime
+
 # Third-Party
 from rest_framework import status
 
@@ -23,6 +26,18 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data, self.dummy_data)
 
+    def test_create_past_reminder(self):
+        date = datetime.datetime.utcnow() - datetime.timedelta(minutes=1)
+        date_str = date.strftime('%Y-%m-%dT%H:%M:%S')
+        dummy_data = {
+            'task': self.task.id,
+            'date': date_str
+        }
+        url = reverse('v1:reminders-list')
+
+        response = self.client.post(url, dummy_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
     def test_retrieve_reminder(self):
         url = reverse('v1:reminders-detail', kwargs={'pk': self.reminder.id})
 
@@ -36,8 +51,10 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
         )
 
     def test_update_reminder(self):
+        date = datetime.datetime.utcnow() + datetime.timedelta(minutes=10)
+        date_str = self.date.strftime('%Y-%m-%dT%H:%M:%S')
         dummy_data = {
-            'date': '2017-12-19T15:00:00'
+            'date': date_str
         }
         url = reverse('v1:reminders-detail', kwargs={'pk': self.reminder.id})
 

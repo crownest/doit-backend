@@ -1,3 +1,6 @@
+# Standart Library
+import datetime
+
 # Third-Party
 from rest_framework import serializers
 
@@ -19,6 +22,12 @@ class ReminderSerializer(serializers.ModelSerializer):
 
         if user != value.user:
             raise serializers.ValidationError(_('Not found.'))
+
+        return value
+
+    def validate_date(self, value):
+        if value <= datetime.datetime.utcnow():
+            raise serializers.ValidationError(_('Can not add past reminder.'))
 
         return value
 
