@@ -1,6 +1,9 @@
 # Third-Party
 from rest_framework import serializers
 
+# Django
+from django.utils.translation import ugettext_lazy as _
+
 # Local Django
 from tasks.models import Task, Reminder
 
@@ -10,6 +13,14 @@ class ReminderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reminder
         fields = ('id', 'task', 'date')
+
+    def validate_task(self, value):
+        user = self.context['request'].user
+
+        if user != value.user:
+            raise serializers.ValidationError(_('Not found.'))
+
+        return value
 
 
 class ReminderListSerializer(ReminderSerializer):
