@@ -14,7 +14,7 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
 # Local Django
-from doit.tasks import send_mail_task
+from doit.tasks import mail_task, reminder_mail_task
 from users.models import ActivationKey, ResetPasswordKey
 
 
@@ -103,7 +103,7 @@ class MailModule(object):
             'recipient_list': [activation_key.user.email]
         }
 
-        send_mail_task.delay(context, 'activation')
+        mail_task.delay(context, 'activation')
 
     @staticmethod
     def send_forgot_password_mail(reset_password_key):
@@ -130,7 +130,7 @@ class MailModule(object):
             'recipient_list': [reset_password_key.user.email]
         }
 
-        send_mail_task.delay(context, 'forgot-password')
+        mail_task.delay(context, 'forgot-password')
 
     @staticmethod
     def send_contact_mail(contact, user):
@@ -157,37 +157,15 @@ class MailModule(object):
             'recipient_list': [user.email]
         }
 
-        send_mail_task.delay(context, 'contact')
+        mail_task.delay(context, 'contact')
 
 
 class ReminderModule(object):
 
     @staticmethod
     def create_celery_task(reminder):
-        template_context = {
-            'domain': settings.DOMAIN,
-            'full_name': reminder.task.user.get_full_name(),
-            'task': reminder.task.title
-        }
-        context = {
-            'subject': _('Reminder'),
-            'message': _(
-                "Doit\n"
-                "Hello, {full_name}\n"
-                "It's time for the task.\n"
-                "'{task}'").format(
-                    full_name=template_context.get('full_name', ''),
-                    task=template_context.get('task', '')
-                ),
-            'html_message': render_to_string(
-                'mail/reminder-mail.html', template_context
-            ),
-            'from_email': settings.DEFAULT_FROM_EMAIL,
-            'recipient_list': [reminder.task.user.email]
-        }
-
-        result = send_mail_task.apply_async(
-            (context, 'reminder'), eta=reminder.date
+        result = reminder_mail_task.apply_async(
+            (reminder.id, 'reminder mail'), eta=reminder.date
         )
         reminder.celery_task_id = result.task_id
         reminder.save()
