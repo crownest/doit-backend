@@ -3,3 +3,7 @@
 
 # Database
 psycopg2==2.7.3
+
+
+# Gunicorn
+gunicorn

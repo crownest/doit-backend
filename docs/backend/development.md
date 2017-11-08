@@ -43,7 +43,7 @@ git clone git@github.com:crownest/doit-backend.git source     (Use SSH)
 **Change directory and branch**
 ```bash
 cd source
-git checkout develop
+git checkout staging
 ```
 
 **Create required files**
@@ -56,7 +56,8 @@ Note: Please ask secret credentials from admin.
 
 **Install requirements**
 ```bash
-pip install -r requirements/dev.txt
+pip install -r requirements/staging.txt
+pip install -r requirements/extra.txt
 ```
 
 **Create database**
