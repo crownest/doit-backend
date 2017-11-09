@@ -65,9 +65,9 @@ pip install -r requirements/extra.txt
 ./manage.py migrate
 ```
 
-**Load dummy data**
+**Load initial data**
 ```bash
-./manage.py loaddata data/db.json
+./manage.py loaddata fixtures/initial_data.json
 ```
 
 **Run project**
