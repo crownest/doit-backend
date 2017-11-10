@@ -14,7 +14,7 @@ class ReminderAPITestCase(APITestCase):
 
     def setUp(self):
         # Create User and Token
-        self.user = User.objects.create_user('doit@unicrow.com', 'test')
+        self.user = User.objects.create_user('doit@unicrow.com', '123456test')
         self.user.first_name = 'Doit'
         self.user.last_name = 'Apps'
         self.user.save()
@@ -54,7 +54,7 @@ class TaskAPITestCase(APITestCase):
 
     def setUp(self):
         # Create User and Token
-        self.user = User.objects.create_user('doit@unicrow.com', 'test')
+        self.user = User.objects.create_user('doit@unicrow.com', '123456test')
         self.user.first_name = 'Doit'
         self.user.last_name = 'Apps'
         self.user.save()

@@ -27,7 +27,8 @@ class UserAPIV1TestCase(UserAPITestCase):
             'email': 'crownest@unicrow.com',
             'first_name': 'Crownest',
             'last_name': 'Apps',
-            'password': 'test'
+            'password': '123456test',
+            'confirm_password': '123456test'
         }
         url = reverse('v1:users-list')
 
@@ -111,7 +112,7 @@ class UserAPIV1TestCase(UserAPITestCase):
 
     def test_change_password_user(self):
         dummy_data = {
-            'old_password': 'test',
+            'old_password': '123456test',
             'new_password': '123456doit',
             'confirm_new_password': '123456doit'
         }

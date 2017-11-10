@@ -50,11 +50,24 @@ class UserRetrieveSerializer(UserSerializer):
 
 
 class UserCreateSerializer(UserSerializer):
+    confirm_password = serializers.CharField(read_only=True)
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = ('email', 'first_name', 'last_name', 'password', 'confirm_password')
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
+
+    def validate_password(self, value):
+        if value != self.initial_data.get('confirm_password', None):
+            raise serializers.ValidationError(
+                "The two password fields didn't match."
+            )
+
+        password_validation.validate_password(value)
+
+        return value
 
 
 class UserUpdateSerializer(UserSerializer):
@@ -82,14 +95,12 @@ class UserPasswordChangeSerializer(serializers.Serializer):
         fields = ('old_password', 'new_password', 'confirm_new_password')
 
     def validate_confirm_new_password(self, value):
-        if self.initial_data['new_password'] != self.initial_data['confirm_new_password']:
+        if value != self.initial_data['new_password']:
             raise serializers.ValidationError(
                 "The two password fields didn't match."
             )
 
-        password_validation.validate_password(
-            self.initial_data['confirm_new_password']
-        )
+        password_validation.validate_password(value)
 
         return value
 

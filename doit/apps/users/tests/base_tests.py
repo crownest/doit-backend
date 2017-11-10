@@ -12,7 +12,7 @@ class UserAPITestCase(APITestCase):
         'email': 'doit@unicrow.com',
         'first_name': 'Doit',
         'last_name': 'Apps',
-        'password': 'test'
+        'password': '123456test'
     }
 
     def setUp(self):

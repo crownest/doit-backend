@@ -16,7 +16,7 @@ class TokenAPITestCase(APITestCase):
         self.email = 'doit@unicrow.com'
         self.first_name = 'Doit'
         self.last_name = 'Apps'
-        self.password = 'test'
+        self.password = '123456test'
         self.user = User.objects.create_user(
             email=self.email, password=self.password
         )
