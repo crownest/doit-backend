@@ -31,3 +31,7 @@ mkdocs==0.16.3
 # click==6.7
 # livereload==2.5.1
 # tornado==4.5.1
+
+
+# Django Cors Headers
+django-cors-headers==2.1.0
