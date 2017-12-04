@@ -14,6 +14,15 @@ from core.serializers import (
 class LoginView(_LoginView):
     serializer_class = LoginSerializer
 
+    def _action(self, serializer):
+        action = super(LoginView, self)._action(serializer)
+
+        action.data.update({
+            'user_id': serializer.user.id,
+        })
+
+        return action
+
 
 class ContactViewSet(mixins.CreateModelMixin,
                      viewsets.GenericViewSet):
