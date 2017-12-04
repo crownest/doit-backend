@@ -17,6 +17,7 @@ class Task(models.Model):
     class Meta:
         verbose_name = _('Task')
         verbose_name_plural = ('Tasks')
+        ordering = ('user', '-id')
 
     def __str__(self):
         return '{title}'.format(title=self.title)
@@ -34,6 +35,7 @@ class Reminder(models.Model):
     class Meta:
         verbose_name = _('Reminder')
         verbose_name_plural = _('Reminders')
+        ordering = ('task', 'date')
 
     def __str__(self):
         return '{task} - {date}'.format(
