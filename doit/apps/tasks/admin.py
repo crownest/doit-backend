@@ -9,7 +9,7 @@ from tasks.models import Reminder, Task
 class TaskAdmin(admin.ModelAdmin):
     fields = ('user', 'title', 'description')
     
-    list_display = ('title', 'user')
+    list_display = ('title', 'user', 'status')
     search_fields = ('title', 'user__email', 'user__first_name', 'user__last_name')
 
 
@@ -17,7 +17,7 @@ class TaskAdmin(admin.ModelAdmin):
 class ReminderAdmin(admin.ModelAdmin):
     fields = ('task', 'date', 'celery_task_id')
 
-    list_display = ('task', 'date')
+    list_display = ('task', 'date', 'is_completed')
     list_filter = ('date',)
     search_fields = (
         'task__title', 'task__user__email',

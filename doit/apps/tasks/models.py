@@ -1,3 +1,6 @@
+# Standart Library
+import datetime
+
 # Django
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -22,6 +25,17 @@ class Task(models.Model):
     def __str__(self):
         return '{title}'.format(title=self.title)
 
+    def status(self):
+        reminder_situations = [reminder.is_completed() for reminder in self.reminders.all()]
+
+        if len(reminder_situations) == 0:
+            return 'Empty'
+        elif False in reminder_situations:
+            return 'Uncompleted'
+        else:
+            return 'Completed'
+    status.short_description = _('Status')
+
 
 class Reminder(models.Model):
     date = models.DateTimeField(verbose_name=_('Date'))
@@ -41,3 +55,11 @@ class Reminder(models.Model):
         return '{task} - {date}'.format(
             task=self.task.title, date=self.date
         )
+
+    def is_completed(self):
+        if self.date < datetime.datetime.utcnow():
+            return True
+        else:
+            return False
+    is_completed.short_description = _('Completed')
+    is_completed.boolean = True
