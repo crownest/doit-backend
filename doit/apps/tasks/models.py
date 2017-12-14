@@ -5,6 +5,9 @@ import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+# Local Django
+from tasks.variables import TASK_EMPTY, TASK_UNCOMPLETED, TASK_COMPLETED
+
 
 class Task(models.Model):
     title = models.CharField(
@@ -29,11 +32,11 @@ class Task(models.Model):
         reminder_situations = [reminder.is_completed() for reminder in self.reminders.all()]
 
         if len(reminder_situations) == 0:
-            return 'Empty'
+            return TASK_EMPTY
         elif False in reminder_situations:
-            return 'Uncompleted'
+            return TASK_UNCOMPLETED
         else:
-            return 'Completed'
+            return TASK_COMPLETED
     status.short_description = _('Status')
 
 
