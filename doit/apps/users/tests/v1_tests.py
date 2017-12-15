@@ -81,7 +81,7 @@ class UserAPIV1TestCase(UserAPITestCase):
         response = self.client.put(url, dummy_data, format='json')
         self.user.refresh_from_db()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, dummy_data)
+        self.assertEqual(response.data.get('id', None), self.user.id)
         self.assertEqual(response.data.get('email', None), self.user.email)
         self.assertEqual(response.data.get('first_name', None), self.user.first_name)
         self.assertEqual(response.data.get('last_name', None), self.user.last_name)

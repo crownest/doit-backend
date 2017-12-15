@@ -54,7 +54,7 @@ class UserCreateSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'password', 'confirm_password')
+        fields = ('id', 'email', 'first_name', 'last_name', 'password', 'confirm_password')
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -74,7 +74,7 @@ class UserUpdateSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name')
+        fields = ('id', 'email', 'first_name', 'last_name')
 
 
 class UserImageUpdateSerializer(UserSerializer):
