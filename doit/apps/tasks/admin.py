@@ -15,7 +15,8 @@ class TaskAdmin(admin.ModelAdmin):
 
 @admin.register(Reminder)
 class ReminderAdmin(admin.ModelAdmin):
-    fields = ('task', 'date', 'celery_task_id')
+    fields = ('task', 'date', 'locale_date', 'celery_task_id')
+    readonly_fields = ('locale_date',)
 
     list_display = ('task', 'date', 'is_completed')
     list_filter = ('date',)

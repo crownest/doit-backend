@@ -5,10 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 
 # Django
 from django.conf import settings
+from django.contrib.auth import password_validation
 
 # Local Django
 from users.models import User
-from django.contrib.auth import password_validation
 
 
 class UserSerializer(serializers.ModelSerializer):

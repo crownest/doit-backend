@@ -37,11 +37,15 @@ class ReminderViewSet(mixins.ListModelMixin,
 
     def perform_create(self, serializer):
         reminder = serializer.save()
+        reminder.locale_date = self.request.data.get('date', '')
+        reminder.save()
 
         ReminderModule.create_celery_task(reminder)
 
     def perform_update(self, serializer):
         reminder = serializer.save()
+        reminder.locale_date = self.request.data.get('date', '')
+        reminder.save()
 
         ReminderModule.update_celery_task(reminder)
 

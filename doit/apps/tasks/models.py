@@ -42,6 +42,9 @@ class Task(models.Model):
 
 class Reminder(models.Model):
     date = models.DateTimeField(verbose_name=_('Date'))
+    locale_date = models.CharField(
+        verbose_name=_('Locale Date'), max_length=254, blank=True
+    )
     celery_task_id = models.CharField(
         verbose_name=_('Celery Task Id'), max_length=254, null=True, blank=True
     )
