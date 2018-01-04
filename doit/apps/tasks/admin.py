@@ -12,6 +12,7 @@ class TaskAdmin(admin.ModelAdmin):
     actions = ['recreate_reminders_celery_task']
 
     fields = ('user', 'title', 'description')
+    readonly_fields = ('user', 'title', 'description')
     
     list_display = ('title', 'user', 'status')
     search_fields = ('title', 'user__email', 'user__first_name', 'user__last_name')
@@ -25,13 +26,34 @@ class TaskAdmin(admin.ModelAdmin):
         'Recreate reminders celery task selected Tasks'
     )
 
+    def get_actions(self, request):
+        actions = super(TaskAdmin, self).get_actions(request)
+        del actions['delete_selected']
+
+        return actions
+
+    def change_view(self, request, object_id, extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['show_save_as_new'] = False
+        extra_context['show_save_and_add_another'] = False
+        extra_context['show_save_and_continue'] = False
+        extra_context['show_save'] = False
+
+        return super(TaskAdmin, self).change_view(request, object_id, extra_context=extra_context)
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 @admin.register(Reminder)
 class ReminderAdmin(admin.ModelAdmin):
     actions = ['recreate_celery_task']
 
     fields = ('task', 'date', 'locale_date', 'celery_task_id')
-    readonly_fields = ('locale_date', 'celery_task_id')
+    readonly_fields = ('task', 'date', 'locale_date', 'celery_task_id')
 
     list_display = ('task', 'date', 'celery_task_id', '_is_completed')
     list_filter = ('date',)
@@ -46,3 +68,24 @@ class ReminderAdmin(admin.ModelAdmin):
     recreate_celery_task.short_description = _(
         'Recreate celery task selected Reminders'
     )
+
+    def get_actions(self, request):
+        actions = super(ReminderAdmin, self).get_actions(request)
+        del actions['delete_selected']
+
+        return actions
+
+    def change_view(self, request, object_id, extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['show_save_as_new'] = False
+        extra_context['show_save_and_add_another'] = False
+        extra_context['show_save_and_continue'] = False
+        extra_context['show_save'] = False
+
+        return super(ReminderAdmin, self).change_view(request, object_id, extra_context=extra_context)
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
