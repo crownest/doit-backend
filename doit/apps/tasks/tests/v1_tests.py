@@ -59,7 +59,7 @@ class ReminderAPIV1TestCase(ReminderAPITestCase):
 
     def test_update_reminder(self):
         date = datetime.datetime.utcnow() + datetime.timedelta(minutes=10)
-        date_str = self.date.strftime('%Y-%m-%dT%H:%M:%S')
+        date_str = date.strftime('%Y-%m-%dT%H:%M:%S')
         dummy_data = {
             'date': date_str
         }
