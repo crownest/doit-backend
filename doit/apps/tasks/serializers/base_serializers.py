@@ -56,7 +56,7 @@ class ReminderUpdateSerializer(ReminderSerializer):
     def validate_date(self, value):
         super(ReminderUpdateSerializer, self).validate_date(value)
 
-        if value <= self.instance.date:
+        if value == self.instance.date:
             raise serializers.ValidationError(_('Can not select same reminder.'))
 
         return value
