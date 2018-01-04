@@ -53,6 +53,14 @@ class ReminderUpdateSerializer(ReminderSerializer):
         model = Reminder
         fields = ('id', 'date', 'locale_date', 'is_completed')
 
+    def validate_date(self, value):
+        super(ReminderUpdateSerializer, self).validate_date(value)
+
+        if value <= self.instance.date:
+            raise serializers.ValidationError(_('Can not select same reminder.'))
+
+        return value
+
 
 class TaskSerializer(serializers.ModelSerializer):
     reminders = ReminderSerializer(many=True, read_only=True)
