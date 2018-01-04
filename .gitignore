@@ -151,3 +151,6 @@ ENV/
 # mkdocs documentation
 site/
 docs_build/
+
+# Celery Worker
+doit_worker.state

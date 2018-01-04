@@ -22,12 +22,12 @@ For further information of setting up RabbitMQ: [Setting up RabbitMQ](http://doc
 
 ## How to run Celery
 ```bash
-celery -A doit worker -n doit_celery@%h
+celery -A doit worker -n doit_celery@%h --statedb=./doit_worker.state
 ```
 
 **If you want to see your tasks list or output status**:
 ```bash
-celery -A doit worker -l info -n doit_celery@%h
+celery -A doit worker -l info -n doit_celery@%h --statedb=./doit_worker.state
 ```
 
 Note for supervisor users: The % sign must be escaped by adding a second one: %%h.<br>
