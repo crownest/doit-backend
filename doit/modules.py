@@ -164,11 +164,14 @@ class ReminderModule(object):
 
     @staticmethod
     def create_celery_task(reminder):
-        result = reminder_mail_task.apply_async(
-            (reminder.id, 'reminder mail'), eta=reminder.date
-        )
-        reminder.celery_task_id = result.task_id
-        reminder.save()
+        if not reminder.is_completed:
+            result = reminder_mail_task.apply_async(
+                (reminder.id, 'reminder mail'), eta=reminder.date
+            )
+            reminder.celery_task_id = result.task_id
+            reminder.save()
+        else:
+            pass
 
     @staticmethod
     def update_celery_task(reminder):
