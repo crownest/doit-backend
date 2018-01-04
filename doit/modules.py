@@ -177,7 +177,7 @@ class ReminderModule(object):
 
     @staticmethod
     def destroy_celery_task(reminder):
-        if reminder.celery_task_id:
+        if not reminder.is_completed and reminder.celery_task_id:
             revoke(reminder.celery_task_id)
             reminder.celery_task_id = None
             reminder.save()

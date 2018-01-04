@@ -54,6 +54,7 @@ class ReminderViewSet(mixins.ListModelMixin,
 
         super(ReminderViewSet, self).perform_destroy(instance)
 
+
 class TaskViewSet(mixins.ListModelMixin,
                   mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,
@@ -83,3 +84,10 @@ class TaskViewSet(mixins.ListModelMixin,
         reminders_data = self.request.data.get('reminders', [])
         for reminder_data in reminders_data:
             Reminder.objects.create(task=task, **reminder_data)
+
+    def perform_destroy(self, instance):
+        reminders = instance.reminders.all()
+        for reminder in reminders:
+            ReminderModule.destroy_celery_task(reminder)
+
+        super(TaskViewSet, self).perform_destroy(instance)

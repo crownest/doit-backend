@@ -29,7 +29,7 @@ class Task(models.Model):
         return '{title}'.format(title=self.title)
 
     def status(self):
-        reminder_situations = [reminder.is_completed() for reminder in self.reminders.all()]
+        reminder_situations = [reminder.is_completed for reminder in self.reminders.all()]
 
         if len(reminder_situations) == 0:
             return TASK_EMPTY
@@ -62,10 +62,11 @@ class Reminder(models.Model):
             task=self.task.title, date=self.date
         )
 
-    def is_completed(self):
+    def _is_completed(self):
         if self.date < datetime.datetime.utcnow():
             return True
         else:
             return False
-    is_completed.short_description = _('Completed')
-    is_completed.boolean = True
+    _is_completed.short_description = _('Completed')
+    _is_completed.boolean = True
+    is_completed = property(_is_completed)

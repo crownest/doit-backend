@@ -40,7 +40,7 @@ class ReminderCreateSerializer(ReminderSerializer):
 
     class Meta:
         model = Reminder
-        fields = ('id', 'task', 'date', 'locale_date')
+        fields = ('id', 'task', 'date', 'locale_date', 'is_completed')
 
 
 class ReminderRetrieveSerializer(ReminderSerializer):
@@ -51,7 +51,7 @@ class ReminderUpdateSerializer(ReminderSerializer):
 
     class Meta:
         model = Reminder
-        fields = ('id', 'date', 'locale_date')
+        fields = ('id', 'date', 'locale_date', 'is_completed')
 
 
 class TaskSerializer(serializers.ModelSerializer):
