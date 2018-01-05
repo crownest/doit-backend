@@ -12,6 +12,9 @@ from tasks.models import Task, Reminder
 
 
 class ReminderSerializer(serializers.ModelSerializer):
+    date = serializers.DateTimeField(error_messages={
+        'invalid': _('Datetime has wrong format.')
+    })
 
     class Meta:
         model = Reminder
