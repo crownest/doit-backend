@@ -24,19 +24,19 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_image(self, obj):
         if obj.image:
-            return settings.DOMAIN + obj.image.url
+            return settings.DOMAIN_BACKEND + obj.image.url
         else:
-            return settings.DOMAIN + '/static/img/users/default-user-image.256x256.png'
+            return settings.DOMAIN_BACKEND + '/static/img/users/default-user-image.256x256.png'
 
     def get_image_128x128(self, obj):
         if obj.image:
             try:
                 context = {'size': (128, 128)}
-                return settings.DOMAIN + get_thumbnailer(obj.image).get_thumbnail(context).url
+                return settings.DOMAIN_BACKEND + get_thumbnailer(obj.image).get_thumbnail(context).url
             except:
                 return None
         else:
-            return settings.DOMAIN + '/static/img/users/default-user-image.128x128.png'
+            return settings.DOMAIN_BACKEND + '/static/img/users/default-user-image.128x128.png'
 
 class UserListSerializer(UserSerializer):
 

@@ -1,0 +1,26 @@
+body {
+  background-image: linear-gradient(100deg, #ab00ef, #7200da);
+}
+
+.logo {
+  display: block;
+  margin: 50px auto;
+}
+
+#link-area {
+  text-align: center;
+}
+
+.login-button {
+  width: 240px;
+  height: 60px;
+  border-radius: 5px;
+  border: solid 1px #ffffff;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  outline: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px 10px 10px 10px;
+}

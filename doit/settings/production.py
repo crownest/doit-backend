@@ -56,7 +56,15 @@ DATABASES = {
 
 # Domain
 
-DOMAIN = 'http://api.doit.unicrow.com'
+DOMAIN_BACKEND = 'http://api.doit.unicrow.com'
+DOMAIN_FRONTEND = 'http://doit.unicrow.com'
+
+
+# Source Code
+
+SOURCE_CODE_BACKEND = 'https://github.com/crownest/doit-backend'
+SOURCE_CODE_FRONTEND = 'https://github.com/crownest/doit-web'
+SOURCE_CODE_MOBILE = 'https://github.com/crownest/doit-mobile'
 
 
 # Email

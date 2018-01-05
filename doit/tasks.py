@@ -41,7 +41,7 @@ def reminder_mail_task(reminder_id, verb):
         )
 
     template_context = {
-        'domain': settings.DOMAIN,
+        'domain': settings.DOMAIN_BACKEND,
         'full_name': reminder.task.user.get_full_name(),
         'task': reminder.task.title
     }

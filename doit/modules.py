@@ -81,9 +81,9 @@ class MailModule(object):
     @staticmethod
     def send_activation_mail(activation_key):
         template_context = {
-            'domain': settings.DOMAIN,
+            'domain': settings.DOMAIN_BACKEND,
             'full_name': activation_key.user.get_full_name(),
-            'activation_url': settings.DOMAIN + reverse(
+            'activation_url': settings.DOMAIN_BACKEND + reverse(
                 'activation', args=[activation_key.key]
             )
         }
@@ -108,9 +108,9 @@ class MailModule(object):
     @staticmethod
     def send_forgot_password_mail(reset_password_key):
         template_context = {
-            'domain': settings.DOMAIN,
+            'domain': settings.DOMAIN_BACKEND,
             'full_name': reset_password_key.user.get_full_name(),
-            'reset_password_url': settings.DOMAIN + reverse(
+            'reset_password_url': settings.DOMAIN_BACKEND + reverse(
                 'reset-password', args=[reset_password_key.key]
             )
         }
@@ -135,9 +135,9 @@ class MailModule(object):
     @staticmethod
     def send_contact_mail(contact, user):
         template_context = {
-            'domain': settings.DOMAIN,
+            'domain': settings.DOMAIN_BACKEND,
             'full_name': user.get_full_name(),
-            'contact_url': settings.DOMAIN + reverse(
+            'contact_url': settings.DOMAIN_BACKEND + reverse(
                 'admin:core_contact_change', args=[contact.id]
             )
         }

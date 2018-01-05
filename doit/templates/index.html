@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load i18n staticfiles %}
+{% load core_extras %}
+
+
+{% block style %}
+  {{ block.super }}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
+{% endblock %}
+
+{% block title%}{{block.super }} | Index{% endblock %}
+
+{% block content %}
+  <div>
+    <img class="logo" src="{% static 'img/logos/logo.png' %}" alt="Logo" width="256">
+
+    <div id="link-area">
+      <div>
+        {% if domain_documentation %}
+          <a href="{{ domain_documentation }}">
+            <button class="login-button">{% trans "Documentation" %}</button>
+          </a>
+        {% endif %}
+        {% if domain_admin_panel %}
+          <a href="{{ domain_admin_panel }}">
+            <button class="login-button">{% trans "Admin Panel" %}</button>
+          </a>
+        {% endif %}
+      </div>
+      <div>
+        {% if source_code_backend %}
+          <a href="{{ source_code_backend }}" target="_blank">
+            <button class="login-button">{% trans "Backend Source Code" %}</button>
+          </a>
+        {% endif %}
+        {% if source_code_frontend %}
+          <a href="{{ source_code_frontend }}" target="_blank">
+            <button class="login-button">{% trans "Frontend Source Code" %}</button>
+          </a>
+        {% endif %}
+        {% if source_code_mobile %}
+          <a href="{{ source_code_mobile }}" target="_blank">
+            <button class="login-button">{% trans "Mobile Source Code" %}</button>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

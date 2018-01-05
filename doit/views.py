@@ -14,6 +14,24 @@ from doit.variables import RESET_PASSWORD_FORM_PREFIX
 from doit.modules import ActivationKeyModule, ResetPasswordKeyModule
 
 
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+
+        context.update({
+            'title': 'Doit',
+            'domain_documentation': '/docs/',
+            'domain_admin_panel': '/admin/',
+            'source_code_backend': settings.SOURCE_CODE_BACKEND,
+            'source_code_frontend': settings.SOURCE_CODE_FRONTEND,
+            'source_code_mobile': settings.SOURCE_CODE_MOBILE
+        })
+
+        return context
+
+
 class DocumentationView(View):
 
     def get(self, request, path='index.html', **kwargs):
@@ -87,7 +105,7 @@ class ResetPasswordView(TemplateView):
 
         context.update({
             'title': _('Reset Password'),
-            'domain': settings.DOMAIN,
+            'domain': settings.DOMAIN_BACKEND,
             'reset_password_key': self.reset_password_key,
             'reset_password_error': self.reset_password_error,
             'reset_password_success': self.reset_password_success,

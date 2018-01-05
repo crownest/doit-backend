@@ -22,10 +22,13 @@ from django.conf.urls import url, include
 
 # Local Django
 from core.api_views import LoginView
-from doit.views import DocumentationView, ActivationView, ResetPasswordView
+from doit.views import IndexView, DocumentationView, ActivationView, ResetPasswordView
 
 
 urlpatterns = [
+    # Landing
+    url(r'^$', IndexView.as_view(), name='index'),
+
     # Admin
     url(r'^admin/', admin.site.urls),
 

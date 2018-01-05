@@ -3,7 +3,7 @@
 {% load i18n staticfiles %}
 
 
-{% block title %}{{ title }} {% if title %}|{% endif %} Doit{% endblock %}
+{% block title %}Doit {% if title %}|{% endif %} {{ title }}{% endblock %}
 
 {% block extrastyle %}
   {{ block.super }}
