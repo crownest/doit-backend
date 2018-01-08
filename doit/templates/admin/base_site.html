@@ -3,11 +3,12 @@
 {% load i18n staticfiles %}
 
 
-{% block title %}Doit {% if title %}|{% endif %} {{ title }}{% endblock %}
+{% block title %}{{ title }} {% if title %}|{% endif %} Doit{% endblock %}
 
 {% block extrastyle %}
   {{ block.super }}
 
+  <link rel="shortcut icon" type="image/png" href="{% static 'img/icons/favicon.png' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/admin/base.css' %}">
 {% endblock %}
 

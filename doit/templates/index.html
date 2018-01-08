@@ -4,13 +4,13 @@
 {% load core_extras %}
 
 
+{% block title%}Index | {{block.super }}{% endblock %}
+
 {% block style %}
   {{ block.super }}
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
 {% endblock %}
-
-{% block title%}{{block.super }} | Index{% endblock %}
 
 {% block content %}
   <div>
