@@ -43,7 +43,8 @@ def reminder_mail_task(reminder_id, verb):
     template_context = {
         'domain': settings.DOMAIN_BACKEND,
         'full_name': reminder.task.user.get_full_name(),
-        'task': reminder.task.title
+        'title': reminder.task.title,
+        'description': reminder.task.description
     }
     context = {
         'subject': _('Reminder'),
@@ -51,9 +52,11 @@ def reminder_mail_task(reminder_id, verb):
             "Doit\n"
             "Hello, {full_name}\n"
             "It's time for the task.\n"
-            "'{task}'").format(
+            "'{title}'\n"
+            "{description}").format(
                 full_name=template_context.get('full_name', ''),
-                task=template_context.get('task', '')
+                title=template_context.get('title', ''),
+                description=template_context.get('description', '')
             ),
         'html_message': render_to_string(
             'mail/reminder-mail.html', template_context
