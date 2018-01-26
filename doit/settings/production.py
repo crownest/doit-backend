@@ -56,8 +56,8 @@ DATABASES = {
 
 # Domain
 
-DOMAIN_BACKEND = 'http://api.doit.unicrow.com'
-DOMAIN_FRONTEND = 'http://doit.unicrow.com'
+DOMAIN_BACKEND = 'https://api.doit.unicrow.com'
+DOMAIN_FRONTEND = 'https://doit.unicrow.com'
 
 
 # Source Code
